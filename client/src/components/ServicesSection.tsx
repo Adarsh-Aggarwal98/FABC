@@ -70,7 +70,7 @@ const services = [
     icon: DollarSign,
     title: "Pension Planning and Commencement",
     category: "Retirement",
-    description: "Solving asset rich cash poor smsf problems during the pension phase",
+    description: "Solving asseat rich cash poor smsf problems during the pension phase",
     features: [
       "Pension documentation",
       "Payment calculations",
