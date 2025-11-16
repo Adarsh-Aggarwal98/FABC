@@ -8,29 +8,32 @@ const teamMembers = [
   {
     name: "Yateender Gupta",
     role: "Director, FCPA",
-    bio: "Yateender Gupta, FCPA and Director, has provided trusted advice to thousands of personal clients over more than 25 years and is an acknowledged expert in areas of tax, Small Business Concessions, Business Structures & Restructures and Self managed superannuation funds. His consulting experience ranges across a broad range of clients from individuals, SMEs in manufacturing, trading, real-estate developments and medical practices, NDIS & AgeCare, Motels.",
+    bio: "Yateender Gupta, FCPA and Director, is a recognised SMSF expert with more than 25 years of experience advising clients across Australia in Self-Managed Superannuation Funds space. He specialises in advising on SMSF compliance, SMSF tax planning strategies and relevant business structures, supporting individuals and SMEs in diverse sectors including real estate, healthcare, NDIS, aged care, and manufacturing. Yateender’s reputation for clear guidance and tailored solutions makes him a trusted and thought leader in SMSF management and compliance.",
     email: "Yateen@aussupersource.com.au",
     image: "https://i.pravatar.cc/400?img=12",
   },
   {
     name: "Sharat Gupta",
-    role: "CPA, SPAA (SSAud)",
-    bio: "Sharat Gupta has provided trusted advice to thousands of personal clients over more than 25 years and is an acknowledged expert in areas of tax, Small Business Concessions, Structures and Self managed superannuation funds. His consulting experience ranges across a broad range of clients from individuals, SME's to leading manufacturing, trading companies, real-estate developers and medical practices.",
+    role: "Partner, CPA, SMSF Auditor",
+    bio: "With nearly 15+ years of experience in Audit & Risk Advisory space including Self-Managed Superannuation Fund (SMSF) compliance and advisory services, Sam is committed in expanding SMSF awareness and expertise. Sam is our Victoria partner based in Melbourne and specialises in providing tailored SMSF compliance support and strategic advice to accountants, financial planners, investment advisers, real estate professionals, mortgage brokers, and individual trustees. Sam’s goal is to simplify SMSF management, ensuring clients navigate regulatory requirements confidently while maximising their fund’s potential.",
     email: "sharat@aussupersource.com.au",
     image: sharatImage,
   },
   {
-    name: "Deep Jangra",
-    role: "Senior Consultant, CPA",
-    bio: "With significant expertise in self-managed super funds accounting and compliance as well as general retirement strategies, Deep Jangra is the Senior Consultant at Australian Super Source Pty Ltd. He is well versed and always updated with the latest in the self-managed super fund industry. He is leading the Accounting, Compliance and Administration Division of Australian Super Source Pty Ltd, which is responsible for the administration of more than 300 SMSFs.",
+ 
+
+
+    name: "Deependra Kumawat",
+    role: "Partner, ICAI",
+    bio: "Deep is our Adelaide (SA) Partner, specializing in SMSF Auditing and a wide range of SMSF compliance services. As a Chartered Accountant, he is dedicated to delivering high-quality compliance support while helping clients develop and maintain a clear strategic vision for their self-managed superannuation funds.",
     email: "suresh@aussupersource.com.au",
     image: deepImage,
   },
   {
-    name: "Sarah Mitchell",
-    role: "SMSF Compliance Manager",
-    bio: "Sarah Mitchell brings over 15 years of experience in SMSF compliance and regulatory affairs. She specializes in ensuring funds meet all legislative requirements and helps clients navigate complex regulatory changes. Her attention to detail and proactive approach ensures our clients' funds remain compliant and optimized.",
-    email: "sarah@aussupersource.com.au",
+    name: "Aditya Wadhwa",
+    role: "SMSF Consultant",
+    bio: "Aditya is one of our senior SMSF Specialists who specializes in all SMSF related compliances including accounting, tax and audit matters.",
+    email: "aditya@aussupersource.com.au",
     image: "https://i.pravatar.cc/400?img=47",
   },
 ];
@@ -47,10 +50,12 @@ export default function TeamSection() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Our Expert Team
+            Our Experts
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Australian Super Source Pty Ltd, specialist self-managed superannuation firm, has been facilitating Accountants & Financial advisors on wholesale SMSF solution provider for more than 18 years, based in Sydney and offering services throughout Australia.
+           
+Our team of SMSF specialists blends technical expertise with a personal touch to every solution. We partner with accountants, advisers, mortgage brokers, lawyers, real estate professionals and individual trustees nationwide to simplify compliance, strengthen strategy, and help every SMSF reach its full potential.
+
           </p>
         </motion.div>
 

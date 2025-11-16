@@ -10,7 +10,7 @@ export default function About() {
     {
       icon: Target,
       title: "Our Mission",
-      description: "To simplify SMSF management for accountants and financial advisors across Australia"
+      description: "Simplifying SMSF management with ATO and ASIC compliance made easy—so your fund truly works for you."
     },
     {
       icon: Users,
@@ -20,7 +20,7 @@ export default function About() {
     {
       icon: Award,
       title: "Excellence",
-      description: "18+ years of experience delivering compliant, professional SMSF solutions"
+      description: "18+ years of strong experience delivering compliant, professional end to end SMSF solutions."
     }
   ];
 

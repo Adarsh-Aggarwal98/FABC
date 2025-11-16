@@ -14,7 +14,7 @@ export default function Footer() {
               AusSuperSource
             </h3>
             <p className="text-muted-foreground max-w-md leading-relaxed mb-6">
-              Specialist self-managed superannuation firm, facilitating Accountants & Financial advisors on wholesale SMSF solution provider for more than 18 years, based in Sydney and offering services throughout Australia.
+             Australia’s leading SMSF specialists—we partner with Accountants, Finance and Real Estate professionals, Lawyers, Mortgage Brokers, and Individual Trustees to deliver end-to-end SMSF planning, advice, and compliance solutions you can trust.
             </p>
             
             <div>
@@ -84,19 +84,18 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground mb-6">
               <li className="font-medium text-foreground">Sydney Office:</li>
               <li>Level 7/186 Burwood Rd</li>
-              <li>Burwood NSW 2134</li>
-              <li className="mt-3">PO box 1213, Burwood, NSW 1805</li>
+              <li>Burwood, Sydney NSW 2134</li>
               <li className="mt-3">
                 <a
                   href="tel:0289701102"
                   className="hover:text-primary transition-colors"
                 >
-                  02 8970 1102
+                  +61 426 784 982
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:0280048156"
+                  href="tel:+61 426 784 982"
                   className="hover:text-primary transition-colors"
                 >
                   02 8004 8156

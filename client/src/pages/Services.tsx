@@ -26,7 +26,7 @@ export default function Services() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Comprehensive SMSF solutions tailored to your needs
+           Expert SMSF solutions tailored to your goals—simplifying compliance, maximising value, and helping your wealth grow with confidence.
           </motion.p>
         </div>
       </section>

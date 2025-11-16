@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { submitContactForm } from "@/lib/api";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -63,17 +64,34 @@ export default function ContactSection() {
 
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
-    console.log("Contact form submitted:", data);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await submitContactForm(data);
 
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-
-    form.reset();
-    setIsSubmitting(false);
+      if (response.status === 'success') {
+        toast({
+          title: "Message sent!",
+          description: response.message || "We'll get back to you within 24 hours.",
+          variant: "default",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Failed to send message",
+          description: response.message || "Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

@@ -20,8 +20,8 @@ const benefits = [
   },
   {
     icon: DollarSign,
-    title: "Transparent Pricing",
-    description: "No hidden fees—clear, upfront pricing for all SMSF services",
+    title: "Transparent & Value based Pricing",
+    description: "No hidden fees—clear, upfront pricing built on value, not volume, for all SMSF services.",
   },
   {
     icon: Shield,
@@ -31,7 +31,7 @@ const benefits = [
   {
     icon: TrendingUp,
     title: "Risk Mitigation",
-    description: "Proactive identification and resolution of compliance issues before they become problems",
+    description: "Proactive identification and resolution of ATO and ASIC compliance issues and contraventions—before they become problems.",
   },
 ];
 

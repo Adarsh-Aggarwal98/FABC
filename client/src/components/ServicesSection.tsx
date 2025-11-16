@@ -10,7 +10,7 @@ const services = [
     icon: FileCheck,
     title: "SMSF Auditing",
     category: "Compliance",
-    description: "Comprehensive and Independent SMSF Audit Solutions in strict accordance with ASAE 3100 and GS 009 standards",
+    description: "Comprehensive and Independent SMSF Audit Solutions in strict accordance with ASAE 3100 and GS 009 standards and more.",
     features: [
       "Financial Statement Audit",
       "Compliance Audit & SISA/SISR evaluation",
@@ -20,9 +20,9 @@ const services = [
   },
   {
     icon: Settings,
-    title: "Outsourcing SMSF Solution",
+    title: "Outsourcing Solution",
     category: "Administration",
-    description: "Seamless, End-to-End SMSF Outsourcing Solutions for accounting firms, financial advisors, and trustees",
+    description: "Seamless, End-to-End SMSF Outsourcing Solutions for accounting firms, financial advisors, and trustees and more.",
     features: [
       "SMSF Setup and Registration",
       "Ongoing Compliance Management",
@@ -34,9 +34,9 @@ const services = [
     icon: ClipboardCheck,
     title: "Pre-Audit Readiness",
     category: "Preparation",
-    description: "Proactive SMSF Audit Preparation and Risk Minimization to ensure smooth, timely audits",
+    description: "Proactive SMSF financial & compliance review, Pre-Audit Preparation and Risk Minimization to ensure smooth, timely SMSF compliance and value derived and more.",
     features: [
-      "Document Review and Gap Analysis",
+      "SMSF Review and Gap Analysis",
       "Bank and Ledger Reconciliations",
       "Contribution and Benefit Verification",
       "Mock Audit and Risk Identification",
@@ -46,7 +46,7 @@ const services = [
     icon: FileText,
     title: "Compliance Framework and management",
     category: "Documentation",
-    description: "Expert service for trust deed updates and member applications to ensure fund compliance",
+    description: "Strengthen your SMSF with a proven compliance framework—expertly managed to meet ATO and ASIC standards every step of the way and more.",
     features: [
       "Trust deed amendments and variations",
       "Member application processing",
@@ -58,7 +58,7 @@ const services = [
     icon: FileSignature,
     title: "Lump Sum Documentation",
     category: "Benefits",
-    description: "Comprehensive preparation of ATO registrations and benefit payment documentation",
+    description: "Comprehensive preparation of ATO registrations and benefit payment documentation and more.",
     features: [
       "ATO registration support",
       "Benefit payment documents",
@@ -70,7 +70,7 @@ const services = [
     icon: DollarSign,
     title: "Pension Planning and Commencement",
     category: "Retirement",
-    description: "Solving asseat rich cash poor smsf problems during the pension phase",
+    description: "Solving asset rich, cash poor SMSF issues -whether during accumulation or pension phase of your SMSF and more.",
     features: [
       "Pension documentation",
       "Payment calculations",
@@ -92,10 +92,15 @@ export default function ServicesSection() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Comprehensive SMSF Solutions
+            Comprehensive SMSF Solutions Made Easy
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            From auditing to outsourcing—whatever your SMSF needs, we've got you covered with expert solutions
+           Expert guidance for everyone and for every stage - from SMSF planning to auditing to outsourcing. 
+
+Access our professional SMSF advice & services without switching your accountant or auditor. 
+
+We work alongside your existing trusted team of Accountant and/ or auditor to strengthen compliance, strategy, and value—all tailored to your fund’s goals.
+
           </p>
         </motion.div>
 
