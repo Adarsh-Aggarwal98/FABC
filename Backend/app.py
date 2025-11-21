@@ -16,15 +16,10 @@ logger = logging.getLogger(__name__)
 # Initialize Flask app
 app = Flask(__name__)
 
-# CORS configuration - allow requests from frontend
+# CORS configuration - allow requests from all origins
 CORS(app, resources={
     r"/api/*": {
-        "origins": [
-            "http://localhost:5173",
-            "http://localhost:3000",
-            "http://localhost:5174",
-            os.getenv("FRONTEND_URL", "*")
-        ],
+        "origins": "*",
         "methods": ["GET", "POST", "OPTIONS"],
         "allow_headers": ["Content-Type"]
     }
@@ -293,6 +288,6 @@ if __name__ == '__main__':
 
     app.run(
         host='0.0.0.0',
-        port=port,
+        port='50007',
         debug=debug
     )
