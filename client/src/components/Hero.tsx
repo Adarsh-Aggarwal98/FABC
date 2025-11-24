@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Award } from "lucide-react";
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
-import heroImage from "@assets/generated_images/Professional_SMSF_office_collaboration_e65dfd08.png";
+import heroImage from "@images/Professional_SMSF_office_collaboration_e65dfd08.png";
 import cpaLogo from "@/images/CPA.jpg";
 import asicLogo from "@/images/ASIC.png";
 import bglLogo from "@/images/Logo_BGL.png";
