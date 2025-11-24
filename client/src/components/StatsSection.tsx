@@ -130,7 +130,7 @@ export default function StatsSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <p className="text-lg font-medium text-foreground">
-            Trusted by hundreds of Australian for maximum compliance and peace of mind
+            Trusted by hundreds of Australian's for maximum compliance and peace of mind
           </p>
         </motion.div>
       </div>
