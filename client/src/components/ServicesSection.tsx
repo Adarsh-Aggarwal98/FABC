@@ -99,7 +99,7 @@ export default function ServicesSection() {
 
 Access our professional SMSF advice & services without switching your accountant or auditor. 
 
-We work alongside your existing trusted team of Accountant and/ or auditor to strengthen compliance, strategy, and value—all tailored to your fund’s goals.
+We work alongside your existing trusted team of Accountant and/ or auditor to strengthen compliance, strategy, and value all tailored to your fund's goals.
 
           </p>
         </motion.div>

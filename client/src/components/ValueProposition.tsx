@@ -6,32 +6,32 @@ const benefits = [
   {
     icon: CheckCircle,
     title: "100% Compliant",
-    description: "Full adherence to SISA/SISR, ATO policies, and Australian Auditing Standards",
+    description: "Full adherence to SISA/SISR, ATO policies, and Australian Auditing Standards.",
   },
   {
     icon: Users,
     title: "Expert SMSF Team",
-    description: "Qualified auditors and accountants specializing in self-managed super funds",
+    description: "Qualified auditors and accountants specializing in self-managed super funds.",
   },
   {
     icon: Zap,
     title: "Fast Turnaround",
-    description: "Quick processing with detailed reporting and actionable insights",
+    description: "Quick processing with detailed reporting and actionable insights.",
   },
   {
     icon: DollarSign,
     title: "Transparent & Value based Pricing",
-    description: "No hidden fees—clear, upfront pricing built on value, not volume, for all SMSF services.",
+    description: "No hidden fee—clear, upfront pricing built on value, not volume, for all SMSF services.",
   },
   {
     icon: Shield,
     title: "Comprehensive Support",
-    description: "Full-service SMSF solutions from setup to ongoing compliance",
+    description: "Full-service SMSF solutions from setup to ongoing compliance.",
   },
   {
     icon: TrendingUp,
     title: "Risk Mitigation",
-    description: "Proactive identification and resolution of ATO and ASIC compliance issues and contraventions—before they become problems.",
+    description: "Proactive identification and resolution of ATO and ASIC compliance issues and contraventions before they become problems.",
   },
 ];
 
@@ -50,7 +50,7 @@ export default function ValueProposition() {
             Less Complexity, More Confidence
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            At AusSuperSource, we don't think SMSF compliance should feel like solving
+            At AusSuperSource, we don't believe SMSF compliance should feel like solving
             a puzzle in the dark. That's why we've built services that are fast,
             professional, and remarkably straightforward.
           </p>
