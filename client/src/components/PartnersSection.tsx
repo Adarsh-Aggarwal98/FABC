@@ -59,14 +59,18 @@ export default function PartnersSection() {
                 >
                   <div className="w-56 md:w-64 h-32 md:h-40 flex items-center justify-center">
                     {partner.logo ? (
-                      <img
+                      <motion.img
                         src={partner.logo}
                         alt={partner.name}
-                        className="max-w-full max-h-full object-contain filter brightness-0 saturate-0 opacity-60 group-hover:brightness-100 group-hover:saturate-100 group-hover:opacity-100 transition-all duration-300"
+                        className="max-w-full max-h-full object-contain transition-all duration-300"
                         style={{
                           padding: '1rem',
                           imageRendering: 'crisp-edges'
                         }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
                       />
                     ) : (
                       <div className="text-center">

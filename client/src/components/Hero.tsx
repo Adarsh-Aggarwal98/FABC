@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Award } from "lucide-react";
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import heroImage from "@images/Professional_SMSF_office_collaboration_e65dfd08.png";
 import cpaLogo from "@/images/CPA.jpg";
 import asicLogo from "@/images/ASIC.png";
@@ -75,7 +76,12 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-wrap gap-6 items-center">
-            <div className="flex items-center gap-2">
+            <motion.div
+              className="flex items-center gap-2"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
               <div className="h-16 w-16 rounded-md bg-white/90 backdrop-blur-md flex items-center justify-center border border-white/30 p-2">
                 <img src={asicLogo} alt="ASIC Registered" className="w-full h-full object-contain" />
               </div>
@@ -83,8 +89,13 @@ export default function Hero() {
                 <div className="text-xs font-semibold">ASIC Registered</div>
                 <div className="text-xs text-white/80">SMSF Auditor</div>
               </div>
-            </div>
-            <div className="flex items-center gap-2">
+            </motion.div>
+            <motion.div
+              className="flex items-center gap-2"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+            >
               <div className="h-16 w-16 rounded-md bg-white/90 backdrop-blur-md flex items-center justify-center border border-white/30 p-2">
                 <img src={cpaLogo} alt="CPA Australia" className="w-full h-full object-contain" />
               </div>
@@ -92,8 +103,13 @@ export default function Hero() {
                 <div className="text-xs font-semibold">CPA Australia</div>
                 <div className="text-xs text-white/80">Accredited</div>
               </div>
-            </div>
-            <div className="flex items-center gap-2">
+            </motion.div>
+            <motion.div
+              className="flex items-center gap-2"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+            >
               <div className="h-16 w-16 rounded-md bg-white/90 backdrop-blur-md flex items-center justify-center border border-white/30 p-2">
                 <img src={bglLogo} alt="BGL 360 Certified" className="w-full h-full object-contain" />
               </div>
@@ -101,7 +117,7 @@ export default function Hero() {
                 <div className="text-xs font-semibold">BGL 360</div>
                 <div className="text-xs text-white/80">Certified</div>
               </div>
-            </div>
+            </motion.div>
             <div className="flex items-center gap-2">
               {/* <div className="h-12 w-12 rounded-md bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
                 <Award className="h-6 w-6 text-white" />

@@ -4,7 +4,7 @@ import StatsSection from "@/components/StatsSection";
 import ValueProposition from "@/components/ValueProposition";
 import HowItWorks from "@/components/HowItWorks";
 import ServicesSection from "@/components/ServicesSection";
-import Testimonials from "@/components/Testimonials";
+// import Testimonials from "@/components/Testimonials";
 import TeamSection from "@/components/TeamSection";
 import PartnersSection from "@/components/PartnersSection";
 import CTASection from "@/components/CTASection";
@@ -21,7 +21,7 @@ export default function Home() {
       <ValueProposition />
       {/* <HowItWorks /> */}
       <ServicesSection />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <PartnersSection />
       <TeamSection />
       <ContactSection />
