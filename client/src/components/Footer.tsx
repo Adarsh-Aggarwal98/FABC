@@ -87,7 +87,7 @@ export default function Footer() {
               <li>Burwood, Sydney NSW 2134</li>
               <li className="mt-3">
                 <a
-                  href="tel:0289701102"
+                  href="tel:+61 426 784 982"
                   className="hover:text-primary transition-colors"
                 >
                   +61 426 784 982
@@ -95,7 +95,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="tel:+61 426 784 982"
+                  href="tel:02 8004 8156"
                   className="hover:text-primary transition-colors"
                 >
                   02 8004 8156

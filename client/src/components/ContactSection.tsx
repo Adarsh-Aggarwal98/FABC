@@ -109,7 +109,7 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <h3 className="text-2xl font-semibold mb-6">Our Locations</h3>
-            
+
             {/* Sydney - Head Office */}
             <div className="mb-8 p-6 bg-muted/30 rounded-lg hover-elevate transition-all duration-300">
               <div className="flex items-start gap-3 mb-3">
@@ -124,8 +124,8 @@ export default function ContactSection() {
               <div className="flex items-start gap-3 mb-2">
                 <Phone className="h-4 w-4 text-primary flex-shrink-0 mt-1" />
                 <div className="space-y-1">
-                  <a href="tel:0289701102" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
-                    02 8970 1102
+                  <a href="tel:+61 426 784 982" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
+                    +61 426 784 982
                   </a>
                   <a href="tel:0280048156" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
                     02 8004 8156
