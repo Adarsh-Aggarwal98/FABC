@@ -115,9 +115,9 @@ export default function ContactSection() {
               <div className="flex items-start gap-3 mb-3">
                 <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-semibold text-lg mb-1">Sydney</h4>
+                  <h4 className="font-semibold text-lg mb-1">Sydney (NSW)</h4>
                   <p className="text-muted-foreground text-sm">
-                    180, Level 7/186 Burwood Rd, Burwood NSW 2134
+                    180, Level 7/186, Burwood Rd, Burwood NSW 2134
                   </p>
                 </div>
               </div>

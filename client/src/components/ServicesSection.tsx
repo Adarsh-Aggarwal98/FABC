@@ -20,7 +20,7 @@ const services = [
   },
   {
     icon: Settings,
-    title: "Outsourcing Solution",
+    title: "Outsourcing Solution's",
     category: "Administration",
     description: "Seamless, End-to-End SMSF Outsourcing Solutions for accounting firms, financial advisors, and trustees and more.",
     features: [

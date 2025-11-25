@@ -110,12 +110,6 @@ export default function Privacy() {
                 </div>
                 <div className="flex items-start gap-2">
                   <Mail className="h-5 w-5 text-primary mt-0.5" />
-                  <div>
-                    <span className="font-medium">By post:</span>
-                    <p className="text-muted-foreground">
-                      Suite 1, 168A, Burwood Road, Burwood, NSW 2134
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>

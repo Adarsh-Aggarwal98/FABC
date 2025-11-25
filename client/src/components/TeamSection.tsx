@@ -15,7 +15,7 @@ const teamMembers = [
     image: yateenImage,
   },
   {
-    name: "Sharat Gupta",
+    name: "Sharat Sharma",
     role: "Partner, CPA, SMSF Auditor",
     bio: "With nearly 15+ years of experience in Audit & Risk Advisory space including Self-Managed Superannuation Fund (SMSF) compliance and advisory services, Sam is committed in expanding SMSF awareness and expertise. Sam is our Victoria partner based in Melbourne and specialises in providing tailored SMSF compliance support and strategic advice to accountants, financial planners, investment advisers, real estate professionals, mortgage brokers, and individual trustees. Sam’s goal is to simplify SMSF management, ensuring clients navigate regulatory requirements confidently while maximising their fund’s potential.",
     email: "sam@aussupersource.com.au",
