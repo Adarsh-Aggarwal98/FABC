@@ -3,6 +3,8 @@ import { Card } from "@/components/ui/card";
 import { Mail, Linkedin } from "lucide-react";
 import sharatImage from "@/images/sharat.jpeg";
 import deepImage from "@/images/Deep.jpeg";
+import adityaImage from "@/images/Aditya.png";
+import yateenImage from "@/images/Yateen.jpeg";
 
 const teamMembers = [
   {
@@ -10,13 +12,13 @@ const teamMembers = [
     role: "Director, FCPA",
     bio: "Yateender Gupta, FCPA and Director, is a recognised SMSF expert with more than 25 years of experience advising clients across Australia in Self-Managed Superannuation Funds space. He specialises in advising on SMSF compliance, SMSF tax planning strategies and relevant business structures, supporting individuals and SMEs in diverse sectors including real estate, healthcare, NDIS, aged care, and manufacturing. Yateender’s reputation for clear guidance and tailored solutions makes him a trusted and thought leader in SMSF management and compliance.",
     email: "Yateen@aussupersource.com.au",
-    image: "https://i.pravatar.cc/400?img=12",
+    image: yateenImage,
   },
   {
     name: "Sharat Gupta",
     role: "Partner, CPA, SMSF Auditor",
     bio: "With nearly 15+ years of experience in Audit & Risk Advisory space including Self-Managed Superannuation Fund (SMSF) compliance and advisory services, Sam is committed in expanding SMSF awareness and expertise. Sam is our Victoria partner based in Melbourne and specialises in providing tailored SMSF compliance support and strategic advice to accountants, financial planners, investment advisers, real estate professionals, mortgage brokers, and individual trustees. Sam’s goal is to simplify SMSF management, ensuring clients navigate regulatory requirements confidently while maximising their fund’s potential.",
-    email: "sharat@aussupersource.com.au",
+    email: "sam@aussupersource.com.au",
     image: sharatImage,
   },
   {
@@ -26,7 +28,7 @@ const teamMembers = [
     name: "Deependra Kumawat",
     role: "Partner, ICAI",
     bio: "Deep is our Adelaide (SA) Partner, specializing in SMSF Auditing and a wide range of SMSF compliance services. As a Chartered Accountant, he is dedicated to delivering high-quality compliance support while helping clients develop and maintain a clear strategic vision for their self-managed superannuation funds.",
-    email: "suresh@aussupersource.com.au",
+    email: "deep@aussupersource.com.au",
     image: deepImage,
   },
   {
@@ -34,7 +36,7 @@ const teamMembers = [
     role: "SMSF Consultant",
     bio: "Aditya is one of our senior SMSF Specialists who specializes in all SMSF related compliances including accounting, tax and audit matters.",
     email: "aditya@aussupersource.com.au",
-    image: "https://i.pravatar.cc/400?img=47",
+    image: adityaImage,
   },
 ];
 
