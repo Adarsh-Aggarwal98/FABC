@@ -108,9 +108,6 @@ export default function Privacy() {
                     info@aussupersource.com.au
                   </a>
                 </div>
-                <div className="flex items-start gap-2">
-                  <Mail className="h-5 w-5 text-primary mt-0.5" />
-                </div>
               </div>
             </div>
           </div>
