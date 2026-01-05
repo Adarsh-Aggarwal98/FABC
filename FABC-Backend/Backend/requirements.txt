@@ -1,0 +1,20 @@
+# Flask core
+Flask==3.0.0
+Flask-CORS==4.0.0
+Flask-Mail==0.9.1
+gunicorn==21.2.0
+
+# Database
+Flask-SQLAlchemy==3.1.1
+# psycopg2-binary  # Uncomment for PostgreSQL support
+
+# Authentication & Sessions
+Flask-Login==0.6.3
+Flask-Bcrypt==1.0.1
+Flask-Session==0.5.0
+
+# Utilities
+python-dotenv==1.0.0
+requests==2.31.0
+Werkzeug==3.0.1
+cachelib==0.10.2
