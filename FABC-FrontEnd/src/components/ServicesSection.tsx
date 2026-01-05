@@ -34,7 +34,7 @@ const services = [
   },
   {
     icon: ClipboardCheck,
-    title: "Pre-Audit Preparation",
+    title: "Pre-Audit Readiness",
     category: "Efficiency",
     description: "Get audit-ready files delivered to your desk. We review, reconcile, and prepare so you can focus on advisory.",
     features: [

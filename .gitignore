@@ -18,14 +18,15 @@ build/
 .vscode/
 .idea/
 *.swp
-*.env
 *.swo
 
 # Database
 *.db
-.env
 instance/
-*.claude
+
+# Claude
+.claude/
+
 # Logs
 *.log
 npm-debug.log*

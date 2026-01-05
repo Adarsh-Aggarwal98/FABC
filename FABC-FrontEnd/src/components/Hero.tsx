@@ -96,7 +96,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <span className="block text-white/90 text-2xl md:text-3xl font-medium mb-2">
-                For Accountants
+                For SMSF and Tax Accountants
               </span>
               <motion.span
                 key={currentTitleIndex}
