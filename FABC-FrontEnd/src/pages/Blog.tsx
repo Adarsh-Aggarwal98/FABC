@@ -26,9 +26,9 @@ interface Blog {
 const fallbackBlogs: Blog[] = [
   {
     id: "1",
-    title: "2024 SMSF Compliance Changes: What Accountants Need to Know",
-    slug: "2024-smsf-compliance-changes",
-    excerpt: "Stay ahead of the latest regulatory updates affecting SMSF audits. Key changes to contribution caps, pension requirements, and reporting obligations.",
+    title: "2025 SMSF Compliance Changes: What Accountants Need to Know",
+    slug: "2025-smsf-compliance-changes",
+    excerpt: "Stay ahead of the latest regulatory updates affecting SMSF audits and compliance. Key changes to contribution caps, pension requirements, and reporting obligations.",
     category: "Compliance",
     author: "Yateender Gupta",
     readTime: "5 min read",

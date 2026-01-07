@@ -7,7 +7,7 @@ import { fetchAtoAlerts, type AtoAlert } from "@/lib/api";
 const fallbackAlerts: AtoAlert[] = [
   {
     id: "1",
-    title: "SMSF annual return deadline extended to 28 February 2025 for eligible funds",
+    title: "SMSF annual return deadline extended to 28 February 2026 for eligible funds",
     type: "update",
     link: "https://www.ato.gov.au/super/self-managed-super-funds/",
     active: true,
@@ -17,7 +17,7 @@ const fallbackAlerts: AtoAlert[] = [
   },
   {
     id: "2",
-    title: "New contribution caps for 2024-25: Concessional $30,000, Non-concessional $120,000",
+    title: "New contribution caps for 2025-26: Concessional $30,000, Non-concessional $120,000",
     type: "alert",
     link: "https://www.ato.gov.au/super/self-managed-super-funds/contributions-and-rollovers/",
     active: true,

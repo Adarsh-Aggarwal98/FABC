@@ -10,9 +10,9 @@ import { fetchBlogs, type Blog } from "@/lib/api";
 const fallbackBlogs: Blog[] = [
   {
     id: "1",
-    title: "2024 SMSF Compliance Changes: What Accountants Need to Know",
-    slug: "2024-smsf-compliance-changes",
-    excerpt: "Stay ahead of the latest regulatory updates affecting SMSF audits. Key changes to contribution caps, pension requirements, and reporting obligations.",
+    title: "2025 SMSF Compliance Changes: What Accountants Need to Know",
+    slug: "2025-smsf-compliance-changes",
+    excerpt: "Stay ahead of the latest regulatory updates affecting SMSF audits and compliance. Key changes to contribution caps, pension requirements, and reporting obligations.",
     content: null,
     category: "Compliance",
     author: "Yateender Gupta",
@@ -20,7 +20,7 @@ const fallbackBlogs: Blog[] = [
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&h=400&fit=crop",
     featured: true,
     published: true,
-    createdAt: "2024-12-15",
+    createdAt: "2025-12-15",
     updatedAt: null,
   },
   {
@@ -35,7 +35,7 @@ const fallbackBlogs: Blog[] = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
     featured: false,
     published: true,
-    createdAt: "2024-12-10",
+    createdAt: "2025-12-10",
     updatedAt: null,
   },
   {
@@ -50,7 +50,7 @@ const fallbackBlogs: Blog[] = [
     image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop",
     featured: false,
     published: true,
-    createdAt: "2024-12-05",
+    createdAt: "2025-12-05",
     updatedAt: null,
   },
   {
@@ -65,7 +65,7 @@ const fallbackBlogs: Blog[] = [
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop",
     featured: false,
     published: true,
-    createdAt: "2024-11-28",
+    createdAt: "2025-11-28",
     updatedAt: null,
   },
 ];

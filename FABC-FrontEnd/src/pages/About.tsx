@@ -43,12 +43,12 @@ export default function About() {
     {
       icon: Building2,
       title: "Scale Your Practice",
-      description: "Take on more SMSF clients without hiring. We're your dedicated audit team, available when you need us."
+      description: "Take on more SMSF clients without hiring. We're your dedicated SMSF Audit & compliance team, available when you need us."
     },
     {
       icon: Users,
       title: "Dedicated Support",
-      description: "A real account manager who knows your practice. Direct communication, no call centers."
+      description: "A real account manager who knows your practice. Direct communication, Australia Based Practice."
     }
   ];
 
@@ -78,7 +78,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Built for Accountants, By Accountants
+            Built for Accountants, By SMSF Experts
           </motion.span>
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
@@ -88,7 +88,7 @@ export default function About() {
           >
             Your Silent Partner in{" "}
             <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              SMSF Auditing
+              SMSF Auditing and Compliance
             </span>
           </motion.h1>
           <motion.p
@@ -118,7 +118,7 @@ export default function About() {
                   Accountants Succeed
                 </span>
               </h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-justify">
                 <p>
                   Australian Super Source was founded with a simple mission: give accounting firms
                   the ability to offer comprehensive SMSF services without building an in-house audit team.
@@ -147,7 +147,7 @@ export default function About() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2">Our Brand Protection Guarantee</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground text-justify">
                       We never contact your clients directly. All communication flows through you,
                       and all reports carry your branding. Your relationships stay yours, always.
                     </p>
@@ -259,7 +259,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section
       <section className="py-20 bg-gradient-to-r from-blue-600 to-cyan-600">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
           <motion.div
@@ -271,16 +271,16 @@ export default function About() {
               Ready to Simplify Your SMSF Practice?
             </h2>
             <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              Join 500+ accounting firms who've streamlined their SMSF audits with AusSuperSource.
+              Join 500+ accounting firms who've streamlined their SMSF audits and compliance with AusSuperSource.
             </p>
             <Link href="/contact">
               <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 shadow-lg">
-                Become a Partner Today
+                Be our SMSF Compliance Partner
               </Button>
             </Link>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
       <FloatingContactButton />

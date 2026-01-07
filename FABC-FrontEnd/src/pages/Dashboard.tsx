@@ -38,7 +38,7 @@ export default function Dashboard() {
                   {user?.email}
                 </p>
                 <Badge className={getRoleBadgeColor(user?.role || "user")}>
-                  {user?.role?.charAt(0).toUpperCase() + user?.role?.slice(1)}
+                  {user?.role ? user.role.charAt(0).toUpperCase() + user.role.slice(1) : "User"}
                 </Badge>
               </div>
             </div>
@@ -79,7 +79,7 @@ export default function Dashboard() {
                     </div>
                     <CardTitle>Upload Document</CardTitle>
                     <CardDescription>
-                      Submit new documents for your SMSF audit
+                      Submit new documents for your SMSF audit and compliance
                     </CardDescription>
                   </CardHeader>
                   <CardContent>

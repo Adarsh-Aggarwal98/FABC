@@ -14,7 +14,7 @@ const testimonials = [
     name: "David Chen",
     role: "Financial Advisor",
     rating: 5,
-    comment: "I recently used AusSuperSource for SMSF auditing, and I was pleasantly surprised by how fast, easy, and convenient the whole process was. The team made it incredibly straightforward and professional.",
+    comment: "I recently used AusSuperSource for SMSF auditing and compliance, and I was pleasantly surprised by how fast, easy, and convenient the whole process was. The team made it incredibly straightforward and professional.",
     avatar: "https://i.pravatar.cc/400?img=13"
   },
   {
@@ -28,21 +28,21 @@ const testimonials = [
     name: "Michael Brown",
     role: "SMSF Trustee",
     rating: 5,
-    comment: "It has been a great experience getting my SMSF audit done through AusSuperSource over the past few years. They are secure, attend to needs and provide correct and legitimate consultation.",
+    comment: "It has been a great experience getting my SMSF audit and compliance done through AusSuperSource over the past few years. They are secure, attend to needs and provide correct and legitimate consultation.",
     avatar: "https://i.pravatar.cc/400?img=12"
   },
   {
     name: "Sarah Mitchell",
     role: "Business Owner",
     rating: 5,
-    comment: "I had an excellent experience with AusSuperSource for my SMSF audit. The team provided professional, knowledgeable, and efficient service, making the process seamless and stress-free. Highly recommended.",
+    comment: "I had an excellent experience with AusSuperSource for my SMSF audit and compliance. The team provided professional, knowledgeable, and efficient service, making the process seamless and stress-free. Highly recommended.",
     avatar: "https://i.pravatar.cc/400?img=48"
   },
   {
     name: "James Wilson",
     role: "Financial Planner",
     rating: 5,
-    comment: "Outstanding service from start to finish. AusSuperSource handled our firm's SMSF audit needs with precision and care. Their expertise in compliance is second to none.",
+    comment: "Outstanding service from start to finish. AusSuperSource handled our firm's SMSF audit and compliance needs with precision and care. Their expertise in compliance is second to none.",
     avatar: "https://i.pravatar.cc/400?img=33"
   }
 ];

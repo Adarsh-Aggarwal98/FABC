@@ -87,7 +87,7 @@ export default function ValueProposition() {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
-            Stop losing billable hours to SMSF audits. Partner with specialists
+            Stop losing billable hours to SMSF audits and compliance. Partner with specialists
             who deliver quality, speed, and complete discretion.
           </p>
         </motion.div>

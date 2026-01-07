@@ -9,7 +9,7 @@ import asicLogo from "@/images/ASIC.png";
 import bglLogo from "@/images/Logo_BGL.png";
 
 export default function Hero() {
-  const titles = ["Your SMSF Audit Partner", "Grow Your Practice", "Seamless SMSF Audits"];
+  const titles = ["Your SMSF Audit and Compliance Partner", "Grow Your Practice", "Seamless SMSF Audits"];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
 
   useEffect(() => {
@@ -116,7 +116,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Focus on your clients while we handle their SMSF audits. Professional solutions,
+              Focus on your clients while we handle their SMSF audits and compliance. Professional solutions,
               fast turnaround, and complete compliance, all delivered under your brand.
             </motion.p>
 

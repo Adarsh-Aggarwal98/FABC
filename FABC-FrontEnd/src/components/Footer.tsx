@@ -1,5 +1,12 @@
 import { Link } from "wouter";
-import { Twitter, Facebook, Linkedin, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Facebook, Linkedin, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+
+// X (formerly Twitter) icon component
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 import { motion } from "framer-motion";
 import cpaLogo from "@/images/CPA.jpg";
 import asicLogo from "@/images/ASIC.png";
@@ -17,9 +24,9 @@ export default function Footer() {
 
       {/* CTA Banner */}
       <div className="border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
           <motion.div
-            className="flex flex-col md:flex-row items-center justify-between gap-6 p-8 rounded-2xl bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-sm border border-white/10"
+            className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-sm border border-white/10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -30,7 +37,7 @@ export default function Footer() {
             </div>
             <Link href="/contact">
               <Button size="lg" className="bg-white text-slate-900 hover:bg-white/90 shadow-lg group">
-                Become a Partner
+                Be our SMSF Compliance Partner
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
@@ -38,15 +45,15 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-10 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand section */}
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               AusSuperSource
             </h3>
             <p className="text-white/70 max-w-md leading-relaxed mb-6">
-              The trusted SMSF audit partner for Australian accounting firms. Professional solutions,
+              Your trusted SMSF audit and compliance partner for Australian accounting firms. Professional solutions,
               fast turnaround, and complete compliance. All delivered behind the scenes so you can
               focus on growing your practice.
             </p>
@@ -112,6 +119,15 @@ export default function Footer() {
                   <div>Burwood, NSW 2134</div>
                 </div>
               </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-medium text-white">Melbourne Office</div>
+                  <div>Office 3077, Ground Floor</div>
+                  <div>470 St Kilda Road</div>
+                  <div>Melbourne, VIC 3004</div>
+                </div>
+              </li>
               <li>
                 <a
                   href="tel:+61426784982"
@@ -146,7 +162,7 @@ export default function Footer() {
               <h4 className="font-semibold mb-4 text-sm text-white/90">Follow Us</h4>
               <div className="flex gap-3">
                 {[
-                  { icon: Twitter, href: "https://twitter.com", color: "hover:bg-[#1DA1F2]", label: "Twitter" },
+                  { icon: XIcon, href: "https://x.com", color: "hover:bg-black", label: "X" },
                   { icon: Facebook, href: "https://facebook.com", color: "hover:bg-[#4267B2]", label: "Facebook" },
                   { icon: Linkedin, href: "https://linkedin.com", color: "hover:bg-[#0077B5]", label: "LinkedIn" },
                 ].map((social) => (
@@ -173,8 +189,8 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} Australian Super Source Pty Ltd. All rights reserved.
           </p>
-          <p className="text-xs">
-            ASIC Registered SMSF Auditor • ABN: XX XXX XXX XXX
+          <p>
+            ASIC Registered SMSF Auditor • ABN: 50 122 940 596
           </p>
         </div>
       </div>

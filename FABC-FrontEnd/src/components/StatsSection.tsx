@@ -136,7 +136,7 @@ export default function StatsSection() {
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Our track record speaks for itself. Here's why accountants choose us
-            as their SMSF audit partner.
+            as their SMSF audit and compliance partner.
           </p>
         </motion.div>
 
@@ -145,7 +145,7 @@ export default function StatsSection() {
             value={500}
             suffix="+"
             label="Partner Firms"
-            description="Accounting practices across Australia trust us with their SMSF audits"
+            description="Accounting practices across Australia trust us with their SMSF audits and compliance"
             dataKpi="partner-firms"
             icon={Building2}
             gradient="from-blue-500 to-cyan-500"

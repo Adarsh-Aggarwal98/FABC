@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { FileCheck, Settings, FileText, DollarSign, ClipboardCheck, Briefcase, ArrowRight } from "lucide-react";
+import { FileCheck, Settings, ClipboardCheck, Briefcase, ArrowRight, Shield, Activity, Handshake } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -8,79 +8,79 @@ import { Button } from "@/components/ui/button";
 const services = [
   {
     icon: FileCheck,
-    title: "Professional SMSF Auditing",
+    title: "SMSF Audits",
     category: "Core Service",
-    description: "Independent SMSF audits delivered under your brand. We handle the compliance while you keep the client relationship.",
+    description: "Deliver independent, ASIC-registered audits for all funds—from straightforward to complex cases involving LRBA, crypto, property, or in-house assets. Compliant with Australian Auditing Standards and 2026 ATO priorities.",
     features: [
-      "Branded audit reports with your firm's identity",
-      "ASAE 3100 & GS 009 compliant audits",
-      "Direct communication with your team only",
-      "Comprehensive IAR documentation",
+      "Fixed-fee audit process",
+      "Asset & valuation verification",
+      "Minimise Part A qualifications",
+      "Full rectification risk management",
     ],
     highlight: true
   },
   {
-    icon: Settings,
-    title: "Complete SMSF Solutions",
-    category: "Practice Growth",
-    description: "End to end SMSF administration services. Expand your service offering without expanding your team.",
-    features: [
-      "Complete SMSF setup and registration",
-      "Ongoing compliance and accounting",
-      "Annual tax return preparation",
-      "Regulatory filings and lodgements",
-    ],
-    highlight: false
-  },
-  {
     icon: ClipboardCheck,
-    title: "Pre-Audit Readiness",
+    title: "Pre-Audit & Quality Review",
     category: "Efficiency",
-    description: "Get audit-ready files delivered to your desk. We review, reconcile, and prepare so you can focus on advisory.",
+    description: "Combine document reviews, investment strategy validation, bank reconciliations, and second reviews before the 45-day ATO deadline. Spot issues early and ensure audit-ready compliance.",
     features: [
-      "Bank and ledger reconciliations",
-      "Gap analysis and issue identification",
-      "Investment schedule verification",
-      "Contribution and pension checks",
+      "Document & investment strategy review",
+      "Bank reconciliation checks",
+      "Early issue identification",
+      "Protect your firm's standing",
     ],
     highlight: false
   },
   {
-    icon: Briefcase,
-    title: "Practice Support",
+    icon: Activity,
+    title: "SMSF Health Check",
+    category: "Proactive",
+    description: "Proactive 20-point diagnostic that assesses compliance gaps, investment risks, and ATO red flags before audits. Receive prioritised action plans and risk scores to safeguard clients.",
+    features: [
+      "20-point compliance diagnostic",
+      "Investment risk assessment",
+      "ATO red flag identification",
+      "Prioritised action plans",
+    ],
+    highlight: false
+  },
+  {
+    icon: Shield,
+    title: "ATO Audit Defence",
+    category: "Protection",
+    description: "Expert support responding to ATO queries, rectification requests, and contravention reports. Proactive defence protects your firm's reputation and resolves issues swiftly.",
+    features: [
+      "ATO query response support",
+      "Rectification management",
+      "Contravention report handling",
+      "Reputation protection",
+    ],
+    highlight: false
+  },
+  {
+    icon: Settings,
+    title: "Full SMSF Compliance Services",
+    category: "End-to-End",
+    description: "Complete end-to-end SMSF services including annual returns, ECPI calculations, and SIS regulations checks. Stay ahead of 2026 data-matching expansions without straining your practice.",
+    features: [
+      "Annual return preparation",
+      "ECPI calculations",
+      "SIS regulations compliance",
+      "2026 data-matching ready",
+    ],
+    highlight: false
+  },
+  {
+    icon: Handshake,
+    title: "Accountant Partnership Support",
     category: "Partnership",
-    description: "Dedicated support for your accounting practice. We're an extension of your team, not a competitor.",
+    description: "Scale your practice with branded audit reports, portal integration (BGL 360, Class Super), and dedicated owner contact. Focus on growth while we handle your SMSF workload.",
     features: [
+      "Branded audit reports",
+      "BGL 360 & Class Super integration",
       "Dedicated account manager",
-      "Priority turnaround options",
-      "Technical SMSF guidance",
-      "Volume-based pricing",
-    ],
-    highlight: false
-  },
-  {
-    icon: FileText,
-    title: "Compliance Documentation",
-    category: "Documentation",
-    description: "Complete documentation services for complex SMSF matters. Professionally prepared, compliance-ready.",
-    features: [
-      "Trust deed reviews and amendments",
-      "Minutes and resolutions",
-      "Member statements",
-      "ATO and ASIC correspondence",
-    ],
-    highlight: false
-  },
-  {
-    icon: DollarSign,
-    title: "Pension & Benefits",
-    category: "Specialist",
-    description: "Complex pension and benefit documentation handled by specialists. From commencement to death benefits.",
-    features: [
-      "Pension commencement documents",
-      "Lump sum documentation",
-      "Death benefit processing",
-      "Reversionary pension setup",
+      "Scalable volume pricing",
     ],
     highlight: false
   },
@@ -218,7 +218,7 @@ export default function ServicesSection() {
         </div>
 
         {/* CTA Section */}
-        <motion.div
+        {/* <motion.div
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -237,7 +237,7 @@ export default function ServicesSection() {
               </Button>
             </Link>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
