@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accountant CRM - Business Documentation</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .header .meta {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .nav a {
+            color: var(--secondary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h3 {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin: 30px 0 15px 0;
+        }
+
+        h4 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #475569;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--light);
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        tr:hover {
+            background: #f1f5f9;
+        }
+
+        /* Value Props Grid */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .value-card {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .value-card h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Architecture Diagram */
+        .architecture {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .arch-level {
+            margin: 20px 0;
+        }
+
+        .arch-box {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            margin: 5px;
+        }
+
+        .arch-box.secondary {
+            background: var(--secondary);
+        }
+
+        .arch-box.tenant {
+            background: white;
+            color: var(--dark);
+            border: 2px solid var(--border);
+        }
+
+        .arch-arrow {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        /* Role Cards */
+        .role-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .role-card h4 {
+            color: var(--primary);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .role-badge {
+            background: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Pain Points */
+        .pain-point {
+            background: #fef2f2;
+            border-left: 4px solid var(--danger);
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #991b1b;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .pricing-card h4 {
+            color: var(--dark);
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: var(--secondary);
+        }
+
+        .pricing-card .description {
+            color: var(--secondary);
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        /* Workflow Diagram */
+        .workflow {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .workflow-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .workflow-step {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .workflow-step.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .workflow-arrow {
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            min-width: 600px;
+        }
+
+        .comparison-table .check {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+
+        .comparison-table .cross {
+            color: var(--danger);
+            font-size: 1.2rem;
+        }
+
+        .comparison-table .partial {
+            color: var(--warning);
+            font-size: 1.2rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: var(--secondary);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* Triggers Table */
+        .trigger-table td:first-child {
+            font-family: monospace;
+            background: var(--light);
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav {
+                display: none;
+            }
+            section {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid var(--border);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            section {
+                padding: 25px;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <h1>Accountant CRM</h1>
+    <p class="subtitle">Business Documentation</p>
+    <p class="meta">Version 1.0 | January 2026 | Business Development, Sales & Marketing Teams</p>
+</header>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#executive-summary">Executive Summary</a>
+        <a href="#product-overview">Product Overview</a>
+        <a href="#target-market">Target Market</a>
+        <a href="#user-roles">User Roles</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#workflows">Workflows</a>
+        <a href="#advantages">Advantages</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#security">Security</a>
+        <a href="#faq">FAQ</a>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="container">
+
+    <!-- Executive Summary -->
+    <section id="executive-summary">
+        <h2>Executive Summary</h2>
+        <p><strong>Accountant CRM</strong> is a multi-tenant Software-as-a-Service (SaaS) platform designed specifically for accounting practices in Australia. It streamlines client management, service delivery, document handling, and billing workflows for accounting firms of all sizes.</p>
+
+        <h3>Key Value Propositions</h3>
+        <div class="value-grid">
+            <div class="value-card">
+                <h4>For Accounting Practices</h4>
+                <ul class="feature-list">
+                    <li>Centralized client management</li>
+                    <li>Automated workflows</li>
+                    <li>Professional invoicing with online payments</li>
+                    <li>Custom forms for data collection</li>
+                    <li>Team workload management</li>
+                    <li>White-label branding options</li>
+                </ul>
+            </div>
+            <div class="value-card">
+                <h4>For Their Clients</h4>
+                <ul class="feature-list">
+                    <li>Self-service portal</li>
+                    <li>Real-time status tracking</li>
+                    <li>Easy document uploads</li>
+                    <li>Secure communication</li>
+                    <li>Mobile-friendly interface</li>
+                    <li>Transparent pricing</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Quick Stats</h3>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">4</div>
+                <div class="label">Subscription Tiers</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">12</div>
+                <div class="label">Automation Triggers</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">11</div>
+                <div class="label">Form Question Types</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">100%</div>
+                <div class="label">Australian Data</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Overview -->
+    <section id="product-overview">
+        <h2>Product Overview</h2>
+
+        <h3>What is Accountant CRM?</h3>
+        <p>Accountant CRM is a purpose-built practice management solution that helps accounting firms:</p>
+
+        <table>
+            <tr>
+                <td><strong>1. Manage Clients</strong></td>
+                <td>Store client information, documents, and communication history</td>
+            </tr>
+            <tr>
+                <td><strong>2. Deliver Services</strong></td>
+                <td>Track service requests from submission to completion</td>
+            </tr>
+            <tr>
+                <td><strong>3. Collect Information</strong></td>
+                <td>Custom forms for tax returns, BAS, company setup, etc.</td>
+            </tr>
+            <tr>
+                <td><strong>4. Bill Clients</strong></td>
+                <td>Professional invoicing with Stripe payment integration</td>
+            </tr>
+            <tr>
+                <td><strong>5. Communicate</strong></td>
+                <td>Email templates, automation, and in-app messaging</td>
+            </tr>
+            <tr>
+                <td><strong>6. Collaborate</strong></td>
+                <td>Assign work to team members and track progress</td>
+            </tr>
+        </table>
+
+        <h3>Platform Architecture</h3>
+        <div class="architecture">
+            <div class="arch-level">
+                <div class="arch-box">SUPER ADMIN<br><small>Platform Owner / Your Company</small></div>
+            </div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-level">
+                <div class="arch-box tenant">
+                    <strong>Practice A</strong><br>
+                    <small>Practice Owner<br>Accountants<br>Clients</small>
+                </div>
+                <div class="arch-box tenant">
+                    <strong>Practice B</strong><br>
+                    <small>Practice Owner<br>Accountants<br>Clients</small>
+                </div>
+                <div class="arch-box tenant">
+                    <strong>Practice C</strong><br>
+                    <small>Practice Owner<br>Accountants<br>Clients</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Market -->
+    <section id="target-market">
+        <h2>Target Market</h2>
+
+        <h3>Primary Market</h3>
+        <p><strong>Australian Accounting Practices</strong> including sole practitioners, small accounting firms (2-10 staff), medium practices (10-50 staff), and large multi-office firms (50+ staff).</p>
+
+        <h3>Ideal Customer Profile</h3>
+        <table>
+            <tr><th>Attribute</th><th>Description</th></tr>
+            <tr><td><strong>Industry</strong></td><td>Accounting, Tax, Bookkeeping, Financial Services</td></tr>
+            <tr><td><strong>Location</strong></td><td>Australia (designed for AU compliance)</td></tr>
+            <tr><td><strong>Size</strong></td><td>1-100+ employees</td></tr>
+            <tr><td><strong>Current Pain Points</strong></td><td>Manual processes, spreadsheets, disconnected tools</td></tr>
+            <tr><td><strong>Tech Readiness</strong></td><td>Moderate - looking for easy-to-use solutions</td></tr>
+            <tr><td><strong>Decision Maker</strong></td><td>Practice Owner, Managing Partner, Operations Manager</td></tr>
+        </table>
+
+        <h3>Market Segments</h3>
+        <table>
+            <tr><th>Segment</th><th>Characteristics</th><th>Recommended Plan</th></tr>
+            <tr><td>Sole Practitioners</td><td>1 accountant, &lt;50 clients</td><td><span class="badge badge-info">Starter</span></td></tr>
+            <tr><td>Small Firms</td><td>2-5 accountants, 50-100 clients</td><td><span class="badge badge-info">Standard</span></td></tr>
+            <tr><td>Growing Practices</td><td>5-20 accountants, 100-500 clients</td><td><span class="badge badge-info">Premium</span></td></tr>
+            <tr><td>Large Firms</td><td>20+ accountants, 500+ clients</td><td><span class="badge badge-info">Enterprise</span></td></tr>
+        </table>
+    </section>
+
+    <!-- User Roles -->
+    <section id="user-roles">
+        <h2>User Roles & Personas</h2>
+
+        <h3>Role Hierarchy</h3>
+        <div class="workflow">
+            <div class="workflow-steps">
+                <div class="workflow-step active">Super Admin<br><small>Platform Level</small></div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step">Practice Owner<br><small>Company Level</small></div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step">Accountant<br><small>Staff</small></div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step">Client<br><small>End User</small></div>
+            </div>
+        </div>
+
+        <div class="role-card">
+            <h4><span class="role-badge">1</span> Super Admin (Platform Owner)</h4>
+            <p><strong>Who:</strong> Your internal team managing the SaaS platform</p>
+            <h4>Capabilities:</h4>
+            <ul class="feature-list">
+                <li>Create and manage accounting practices (tenants)</li>
+                <li>Set subscription plans and limits</li>
+                <li>Access all practices for support purposes</li>
+                <li>Impersonate users for troubleshooting</li>
+                <li>View platform-wide analytics</li>
+                <li>Manage system-wide email templates</li>
+                <li>Configure default services and forms</li>
+            </ul>
+        </div>
+
+        <div class="role-card">
+            <h4><span class="role-badge">2</span> Practice Owner</h4>
+            <p><strong>Who:</strong> The accounting firm owner or managing partner</p>
+            <h4>Capabilities:</h4>
+            <ul class="feature-list">
+                <li>Full control over their practice</li>
+                <li>Invite and manage accountants and clients</li>
+                <li>Customize services offered</li>
+                <li>Create and clone forms</li>
+                <li>Access all client data and requests</li>
+                <li>View practice analytics and reports</li>
+                <li>Configure practice branding</li>
+                <li>Handle invoicing and payments</li>
+            </ul>
+            <h4>Pain Points Addressed:</h4>
+            <div class="pain-point">"I can't see what my team is working on"</div>
+            <div class="pain-point">"Client onboarding takes too long"</div>
+            <div class="pain-point">"I'm using 5 different tools that don't talk to each other"</div>
+            <div class="pain-point">"Chasing payments is time-consuming"</div>
+        </div>
+
+        <div class="role-card">
+            <h4><span class="role-badge">3</span> Accountant (Staff)</h4>
+            <p><strong>Who:</strong> Employed accountants, bookkeepers, tax agents</p>
+            <h4>Capabilities:</h4>
+            <ul class="feature-list">
+                <li>View assigned client requests</li>
+                <li>Process service requests</li>
+                <li>Communicate with clients via queries</li>
+                <li>Upload and manage documents</li>
+                <li>Add internal notes</li>
+                <li>Tag and categorize clients</li>
+            </ul>
+            <h4>Pain Points Addressed:</h4>
+            <div class="pain-point">"I don't know which clients need attention"</div>
+            <div class="pain-point">"Client documents are scattered everywhere"</div>
+            <div class="pain-point">"I waste time chasing clients for information"</div>
+        </div>
+
+        <div class="role-card">
+            <h4><span class="role-badge">4</span> Client (End User)</h4>
+            <p><strong>Who:</strong> Individuals or businesses using the accounting services</p>
+            <h4>Capabilities:</h4>
+            <ul class="feature-list">
+                <li>Request services</li>
+                <li>Fill out required forms</li>
+                <li>Upload documents</li>
+                <li>Track request status</li>
+                <li>Respond to accountant queries</li>
+                <li>View and pay invoices</li>
+            </ul>
+            <h4>Pain Points Addressed:</h4>
+            <div class="pain-point">"I never know what's happening with my tax return"</div>
+            <div class="pain-point">"I keep forgetting what documents to provide"</div>
+            <div class="pain-point">"Paying invoices is inconvenient"</div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+        <h2>Feature Catalog</h2>
+
+        <h3>Core Features (All Plans)</h3>
+
+        <h4>Client Management</h4>
+        <table>
+            <tr><th>Feature</th><th>Description</th><th>Benefit</th></tr>
+            <tr><td>Client Profiles</td><td>Comprehensive client information storage</td><td>Single source of truth</td></tr>
+            <tr><td>Contact Details</td><td>Phone, email, address management</td><td>Easy communication</td></tr>
+            <tr><td>Document Storage</td><td>Secure Azure cloud storage</td><td>No more lost documents</td></tr>
+            <tr><td>Client Tags</td><td>Categorize clients with custom labels</td><td>Easy filtering and organization</td></tr>
+            <tr><td>Activity History</td><td>Complete audit trail</td><td>Full transparency</td></tr>
+        </table>
+
+        <h4>Service Request Management</h4>
+        <table>
+            <tr><th>Feature</th><th>Description</th><th>Benefit</th></tr>
+            <tr><td>Service Catalog</td><td>Define services with pricing</td><td>Professional service menu</td></tr>
+            <tr><td>Request Workflow</td><td>Pending → Assigned → Processing → Completed</td><td>Clear progress tracking</td></tr>
+            <tr><td>Assignment System</td><td>Assign requests to accountants</td><td>Balanced workload</td></tr>
+            <tr><td>Status Tracking</td><td>Real-time status updates</td><td>Client transparency</td></tr>
+            <tr><td>Query System</td><td>Two-way messaging on requests</td><td>Efficient communication</td></tr>
+            <tr><td>Internal Notes</td><td>Private notes for staff</td><td>Team collaboration</td></tr>
+        </table>
+
+        <h4>Form Builder</h4>
+        <table>
+            <tr><th>Feature</th><th>Description</th><th>Benefit</th></tr>
+            <tr><td>11 Question Types</td><td>Text, select, date, file, checkbox, etc.</td><td>Flexible data collection</td></tr>
+            <tr><td>Conditional Logic</td><td>Show/hide questions based on answers</td><td>Smart, dynamic forms</td></tr>
+            <tr><td>Repeatable Sections</td><td>Handle multiple directors, properties, etc.</td><td>Complex data structures</td></tr>
+            <tr><td>Form Templates</td><td>Pre-built forms for common services</td><td>Quick setup</td></tr>
+            <tr><td>Response Snapshots</td><td>Immutable form submission records</td><td>Data integrity</td></tr>
+        </table>
+
+        <h3>Advanced Features</h3>
+
+        <h4>Invoicing & Payments</h4>
+        <table>
+            <tr><th>Feature</th><th>Description</th><th>Plans</th></tr>
+            <tr><td>Professional Invoices</td><td>Branded, itemized invoices</td><td><span class="badge badge-success">All</span></td></tr>
+            <tr><td>Automatic Numbering</td><td>INV-YYYY-XXXXX format</td><td><span class="badge badge-success">All</span></td></tr>
+            <tr><td>GST Calculations</td><td>Australian tax compliance</td><td><span class="badge badge-success">All</span></td></tr>
+            <tr><td>Line Items</td><td>Multiple services per invoice</td><td><span class="badge badge-success">All</span></td></tr>
+            <tr><td>Stripe Integration</td><td>Online card payments</td><td><span class="badge badge-info">Standard+</span></td></tr>
+            <tr><td>Checkout Sessions</td><td>Hosted payment pages</td><td><span class="badge badge-info">Standard+</span></td></tr>
+            <tr><td>Webhook Reconciliation</td><td>Automatic payment updates</td><td><span class="badge badge-info">Standard+</span></td></tr>
+            <tr><td>Payment Links</td><td>Shareable payment URLs</td><td><span class="badge badge-info">Standard+</span></td></tr>
+        </table>
+
+        <h4>Email & Communication</h4>
+        <table>
+            <tr><th>Feature</th><th>Description</th><th>Plans</th></tr>
+            <tr><td>Email Templates</td><td>Customizable templates</td><td><span class="badge badge-success">All</span></td></tr>
+            <tr><td>Template Variables</td><td>Dynamic content insertion</td><td><span class="badge badge-success">All</span></td></tr>
+            <tr><td>Bulk Email</td><td>Send to multiple clients</td><td><span class="badge badge-info">Standard+</span></td></tr>
+            <tr><td>Recipient Filtering</td><td>Filter by role, tags, status</td><td><span class="badge badge-info">Standard+</span></td></tr>
+            <tr><td>Scheduled Emails</td><td>Send at future date/time</td><td><span class="badge badge-warning">Premium+</span></td></tr>
+            <tr><td>Email Automation</td><td>Trigger-based emails</td><td><span class="badge badge-warning">Premium+</span></td></tr>
+            <tr><td>12 Trigger Types</td><td>Registration, invoice, birthday, etc.</td><td><span class="badge badge-warning">Premium+</span></td></tr>
+        </table>
+
+        <h4>Email Automation Triggers</h4>
+        <table class="trigger-table">
+            <tr><th>Trigger</th><th>When It Fires</th><th>Example Use</th></tr>
+            <tr><td>client_registered</td><td>New client signs up</td><td>Welcome email with getting started guide</td></tr>
+            <tr><td>service_requested</td><td>Client submits request</td><td>Confirmation with expected timeline</td></tr>
+            <tr><td>service_completed</td><td>Work marked complete</td><td>Completion notice with next steps</td></tr>
+            <tr><td>invoice_sent</td><td>Invoice emailed</td><td>Payment reminder after 7 days</td></tr>
+            <tr><td>invoice_overdue</td><td>Past due date</td><td>Escalating reminders</td></tr>
+            <tr><td>payment_received</td><td>Payment confirmed</td><td>Thank you receipt</td></tr>
+            <tr><td>document_uploaded</td><td>Client uploads file</td><td>Acknowledgment email</td></tr>
+            <tr><td>query_raised</td><td>Accountant asks question</td><td>Notification to respond</td></tr>
+            <tr><td>birthday</td><td>Client's birthday</td><td>Birthday greeting</td></tr>
+            <tr><td>anniversary</td><td>1 year as client</td><td>Loyalty appreciation</td></tr>
+            <tr><td>inactivity</td><td>No activity for X days</td><td>Re-engagement email</td></tr>
+            <tr><td>custom</td><td>Via API webhook</td><td>Custom integrations</td></tr>
+        </table>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+        <h2>Pricing & Plans</h2>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h4>Starter</h4>
+                <div class="price">$49<span>/month</span></div>
+                <p class="description">Perfect for sole practitioners just starting out</p>
+                <ul>
+                    <li>✓ Up to <strong>5</strong> staff members</li>
+                    <li>✓ Up to <strong>50</strong> clients</li>
+                    <li>✓ 10 services, 5 forms</li>
+                    <li>✓ 5 GB document storage</li>
+                    <li>✓ Core features</li>
+                    <li>✓ Email support</li>
+                    <li>✗ Stripe payments</li>
+                    <li>✗ Email automation</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card featured">
+                <h4>Standard</h4>
+                <div class="price">$99<span>/month</span></div>
+                <p class="description">For small firms ready to grow</p>
+                <ul>
+                    <li>✓ Up to <strong>10</strong> staff members</li>
+                    <li>✓ Up to <strong>100</strong> clients</li>
+                    <li>✓ 25 services, 15 forms</li>
+                    <li>✓ 20 GB document storage</li>
+                    <li>✓ <strong>Stripe payments</strong></li>
+                    <li>✓ <strong>Bulk email</strong></li>
+                    <li>✓ Priority email support</li>
+                    <li>✗ Email automation</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card">
+                <h4>Premium</h4>
+                <div class="price">$199<span>/month</span></div>
+                <p class="description">For established practices wanting automation</p>
+                <ul>
+                    <li>✓ Up to <strong>50</strong> staff members</li>
+                    <li>✓ Up to <strong>500</strong> clients</li>
+                    <li>✓ <strong>Unlimited</strong> services & forms</li>
+                    <li>✓ 100 GB document storage</li>
+                    <li>✓ <strong>Email automation</strong></li>
+                    <li>✓ <strong>Custom branding</strong></li>
+                    <li>✓ <strong>API access</strong></li>
+                    <li>✓ Phone support</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card">
+                <h4>Enterprise</h4>
+                <div class="price">Custom</div>
+                <p class="description">For large firms with specific needs</p>
+                <ul>
+                    <li>✓ <strong>Unlimited</strong> users</li>
+                    <li>✓ <strong>Unlimited</strong> clients</li>
+                    <li>✓ <strong>Unlimited</strong> storage</li>
+                    <li>✓ All Premium features</li>
+                    <li>✓ <strong>Dedicated account manager</strong></li>
+                    <li>✓ <strong>Custom integrations</strong></li>
+                    <li>✓ <strong>99.9% SLA</strong></li>
+                    <li>✓ On-premise option</li>
+                </ul>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 20px;"><strong>14-day free trial</strong> • No credit card required • Cancel anytime</p>
+    </section>
+
+    <!-- Workflows -->
+    <section id="workflows">
+        <h2>Key Workflows</h2>
+
+        <h3>1. Client Onboarding Workflow</h3>
+        <div class="workflow">
+            <div class="workflow-steps">
+                <div class="workflow-step">Practice Owner<br>invites client</div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step">System sends<br>welcome email</div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step">Client logs in<br>& completes profile</div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step active">Client requests<br>first service</div>
+            </div>
+        </div>
+
+        <h3>2. Service Request Workflow</h3>
+        <div class="workflow">
+            <div class="workflow-steps">
+                <div class="workflow-step">PENDING<br><small>Client submits</small></div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step">ASSIGNED<br><small>Owner assigns</small></div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step">PROCESSING<br><small>Accountant works</small></div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step">COMPLETED<br><small>Work done</small></div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step active">PAID<br><small>Invoice paid</small></div>
+            </div>
+        </div>
+
+        <h3>3. Invoice & Payment Flow (Stripe)</h3>
+        <div class="workflow">
+            <div class="workflow-steps">
+                <div class="workflow-step">Create Invoice<br><small>with line items</small></div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step">Send to Client<br><small>via email</small></div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step">Client Pays<br><small>Stripe Checkout</small></div>
+                <span class="workflow-arrow">→</span>
+                <div class="workflow-step active">Auto Updated<br><small>via webhook</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages -->
+    <section id="advantages">
+        <h2>Competitive Advantages</h2>
+
+        <h3>Why Choose Accountant CRM?</h3>
+        <table>
+            <tr><th>Advantage</th><th>Description</th></tr>
+            <tr><td><strong>Australian-First Design</strong></td><td>Built for AU accounting: GST, TFN, ABN, SMSF, ATO requirements</td></tr>
+            <tr><td><strong>Multi-Tenant SaaS</strong></td><td>Practices get isolated data with shared infrastructure efficiency</td></tr>
+            <tr><td><strong>Modern Technology</strong></td><td>React frontend, Python backend, cloud-native architecture</td></tr>
+            <tr><td><strong>Stripe Integration</strong></td><td>Accept payments instantly, no manual reconciliation</td></tr>
+            <tr><td><strong>Email Automation</strong></td><td>Set it and forget it - 12 trigger types</td></tr>
+            <tr><td><strong>Custom Forms</strong></td><td>Build any form without coding - conditional logic included</td></tr>
+            <tr><td><strong>White-Label Ready</strong></td><td>Practices can brand as their own</td></tr>
+            <tr><td><strong>Competitive Pricing</strong></td><td>Starts at $49/month - cheaper than legacy solutions</td></tr>
+        </table>
+
+        <h3>Competitor Comparison</h3>
+        <div class="comparison-table">
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Accountant CRM</th>
+                    <th>Competitor A</th>
+                    <th>Competitor B</th>
+                </tr>
+                <tr>
+                    <td>Australian Tax Focus</td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="cross">✗</span></td>
+                    <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td>Multi-Tenant</td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="cross">✗</span></td>
+                    <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td>Custom Forms</td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="partial">⚠</span> Limited</td>
+                    <td><span class="cross">✗</span></td>
+                </tr>
+                <tr>
+                    <td>Stripe Payments</td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="cross">✗</span></td>
+                    <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td>Email Automation</td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="partial">⚠</span> Basic</td>
+                    <td><span class="cross">✗</span></td>
+                </tr>
+                <tr>
+                    <td>Starting Price</td>
+                    <td><strong>$49</strong></td>
+                    <td>$99</td>
+                    <td>$79</td>
+                </tr>
+                <tr>
+                    <td>White-Label</td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="cross">✗</span></td>
+                    <td><span class="partial">⚠</span> Extra cost</td>
+                </tr>
+                <tr>
+                    <td>Modern UI</td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="cross">✗</span></td>
+                    <td><span class="partial">⚠</span></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- Integrations -->
+    <section id="integrations">
+        <h2>Integration Capabilities</h2>
+
+        <h3>Current Integrations</h3>
+        <table>
+            <tr><th>Integration</th><th>Type</th><th>Description</th></tr>
+            <tr><td><strong>Stripe</strong></td><td>Payment</td><td>Online payments, webhooks, automatic reconciliation</td></tr>
+            <tr><td><strong>Microsoft Graph</strong></td><td>Email</td><td>Send emails via Office 365</td></tr>
+            <tr><td><strong>Azure Blob Storage</strong></td><td>Storage</td><td>Secure document storage</td></tr>
+        </table>
+
+        <h3>Planned Integrations (Roadmap)</h3>
+        <table>
+            <tr><th>Integration</th><th>Timeline</th><th>Description</th></tr>
+            <tr><td>Xero</td><td>Q2 2026</td><td>Two-way sync with Xero accounting</td></tr>
+            <tr><td>MYOB</td><td>Q3 2026</td><td>Integration with MYOB</td></tr>
+            <tr><td>ATO Portal</td><td>Q4 2026</td><td>Direct lodgement capability</td></tr>
+            <tr><td>Zapier</td><td>Q2 2026</td><td>Connect to 5000+ apps</td></tr>
+        </table>
+    </section>
+
+    <!-- Security -->
+    <section id="security">
+        <h2>Security & Compliance</h2>
+
+        <h3>Security Features</h3>
+        <table>
+            <tr><th>Feature</th><th>Description</th></tr>
+            <tr><td><strong>Encryption at Rest</strong></td><td>All data encrypted in database</td></tr>
+            <tr><td><strong>Encryption in Transit</strong></td><td>TLS 1.3 for all connections</td></tr>
+            <tr><td><strong>JWT Authentication</strong></td><td>Secure token-based auth</td></tr>
+            <tr><td><strong>2FA Support</strong></td><td>Email OTP verification</td></tr>
+            <tr><td><strong>Role-Based Access</strong></td><td>Granular permissions</td></tr>
+            <tr><td><strong>Audit Logging</strong></td><td>Complete activity trail</td></tr>
+            <tr><td><strong>Session Management</strong></td><td>Token expiry and refresh</td></tr>
+            <tr><td><strong>Secure File Storage</strong></td><td>Azure Blob with SAS tokens</td></tr>
+        </table>
+
+        <h3>Compliance</h3>
+        <table>
+            <tr><th>Standard</th><th>Status</th></tr>
+            <tr><td>Privacy Act 1988</td><td><span class="badge badge-success">Compliant</span></td></tr>
+            <tr><td>Australian Privacy Principles</td><td><span class="badge badge-success">Compliant</span></td></tr>
+            <tr><td>GDPR</td><td><span class="badge badge-success">Ready</span></td></tr>
+            <tr><td>PCI DSS</td><td><span class="badge badge-success">Via Stripe (Level 1)</span></td></tr>
+            <tr><td>SOC 2</td><td><span class="badge badge-warning">In Progress</span></td></tr>
+        </table>
+
+        <h3>Data Residency</h3>
+        <ul class="feature-list">
+            <li>Primary data center: <strong>Australia East (Sydney)</strong></li>
+            <li>Backup data center: <strong>Australia Southeast (Melbourne)</strong></li>
+            <li>All client data remains in Australia</li>
+        </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>General</h3>
+        <div class="faq-item">
+            <p class="faq-question">Q: Is this suitable for practices outside Australia?</p>
+            <p class="faq-answer">A: The platform is optimized for Australian accounting (GST, TFN, etc.) but can be used internationally. Some features like tax calculations would need customization.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">Q: How long does onboarding take?</p>
+            <p class="faq-answer">A: Most practices are fully operational within 1-2 days. We provide onboarding support to import existing clients and configure services.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">Q: Can I import my existing client data?</p>
+            <p class="faq-answer">A: Yes, we support CSV import for clients. Contact support for bulk migration assistance.</p>
+        </div>
+
+        <h3>Pricing & Billing</h3>
+        <div class="faq-item">
+            <p class="faq-question">Q: Is there a free trial?</p>
+            <p class="faq-answer">A: Yes, 14-day free trial on all plans. No credit card required.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">Q: Can I change plans later?</p>
+            <p class="faq-answer">A: Yes, upgrade or downgrade anytime. Changes are prorated.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">Q: What payment methods do you accept?</p>
+            <p class="faq-answer">A: Credit card (Visa, Mastercard, Amex) via Stripe. Enterprise plans can pay by invoice.</p>
+        </div>
+
+        <h3>Features</h3>
+        <div class="faq-item">
+            <p class="faq-question">Q: Can my clients pay invoices online?</p>
+            <p class="faq-answer">A: Yes, with Standard plan and above. Clients receive a secure Stripe checkout link.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">Q: How many email templates can I create?</p>
+            <p class="faq-answer">A: Unlimited templates on all plans.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">Q: Can I customize the forms?</p>
+            <p class="faq-answer">A: Yes, the form builder supports 11 question types with conditional logic. Create any form you need.</p>
+        </div>
+
+        <h3>Security</h3>
+        <div class="faq-item">
+            <p class="faq-question">Q: Where is my data stored?</p>
+            <p class="faq-answer">A: All data is stored in Australian data centers (Azure Australia East).</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">Q: Is client data backed up?</p>
+            <p class="faq-answer">A: Yes, automated backups every 6 hours with 30-day retention.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">Q: Can other practices see my data?</p>
+            <p class="faq-answer">A: No, the multi-tenant architecture ensures complete data isolation between practices.</p>
+        </div>
+
+        <h3>Support</h3>
+        <div class="faq-item">
+            <p class="faq-question">Q: What support is included?</p>
+            <p class="faq-answer">A: Starter: Email support (48hr response) | Standard: Priority email (24hr) | Premium: Email + Phone (same day) | Enterprise: Dedicated account manager</p>
+        </div>
+    </section>
+
+    <!-- Glossary -->
+    <section>
+        <h2>Glossary</h2>
+        <table>
+            <tr><th>Term</th><th>Definition</th></tr>
+            <tr><td><strong>Tenant</strong></td><td>An accounting practice using the platform</td></tr>
+            <tr><td><strong>Practice Owner</strong></td><td>The admin user who manages a practice</td></tr>
+            <tr><td><strong>Service Request</strong></td><td>A client's request for a specific service</td></tr>
+            <tr><td><strong>Query</strong></td><td>A question/message between accountant and client</td></tr>
+            <tr><td><strong>Form Response</strong></td><td>Client's submitted answers to a form</td></tr>
+            <tr><td><strong>Automation Trigger</strong></td><td>An event that initiates an automated email</td></tr>
+            <tr><td><strong>SAS Token</strong></td><td>Secure time-limited URL for document access</td></tr>
+            <tr><td><strong>Webhook</strong></td><td>Automated notification from Stripe about payments</td></tr>
+            <tr><td><strong>Multi-tenant</strong></td><td>Architecture where multiple practices share infrastructure but have isolated data</td></tr>
+            <tr><td><strong>White-label</strong></td><td>Ability to brand the platform as your own</td></tr>
+        </table>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <h3>Contact Information</h3>
+    <p><strong>Sales:</strong> sales@accountantcrm.com | 1300 XXX XXX</p>
+    <p><strong>Support:</strong> support@accountantcrm.com</p>
+    <p><strong>Partnerships:</strong> partners@accountantcrm.com</p>
+    <br>
+    <p>Document Version 1.0 | January 2026</p>
+    <p>Confidential - Internal Business Development Use</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,3089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accountant CRM - Test Case Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-tabs a {
+            padding: 10px 20px;
+            background: #e2e8f0;
+            color: #2d3748;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-tabs a:hover {
+            background: #2c5282;
+            color: white;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1a365d;
+            border-bottom: 3px solid #3182ce;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #2c5282;
+            margin: 25px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #4a5568;
+            margin: 20px 0 10px 0;
+            font-size: 1.1em;
+            background: #f7fafc;
+            padding: 10px;
+            border-left: 4px solid #3182ce;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f7fafc;
+        }
+
+        tr:hover {
+            background: #edf2f7;
+        }
+
+        .test-case {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .test-case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .test-id {
+            background: #2c5282;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .priority-high {
+            background: #c53030;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .priority-medium {
+            background: #d69e2e;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .priority-low {
+            background: #38a169;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .test-steps {
+            margin: 10px 0;
+        }
+
+        .test-steps ol {
+            margin-left: 20px;
+        }
+
+        .test-steps li {
+            margin: 8px 0;
+            padding: 5px;
+        }
+
+        .expected-result {
+            background: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .precondition {
+            background: #fef3c7;
+            border-left: 4px solid #d69e2e;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .test-data {
+            background: #e9d8fd;
+            border-left: 4px solid #805ad5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        code {
+            background: #2d3748;
+            color: #68d391;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #68d391;
+        }
+
+        .info-box {
+            background: #bee3f8;
+            border-left: 4px solid #3182ce;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .warning-box {
+            background: #fed7d7;
+            border-left: 4px solid #c53030;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin: 2px;
+        }
+
+        .role-super-admin { background: #9f7aea; color: white; }
+        .role-admin { background: #4299e1; color: white; }
+        .role-accountant { background: #48bb78; color: white; }
+        .role-client { background: #ed8936; color: white; }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 10px 15px;
+            margin: 5px 0;
+            background: #f7fafc;
+            border-radius: 5px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checklist li::before {
+            content: "[ ] ";
+            font-family: monospace;
+            color: #718096;
+        }
+
+        .feedback-section {
+            background: #fffaf0;
+            border: 2px dashed #ed8936;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .feedback-section h4 {
+            background: none;
+            border-left: none;
+            padding: 0;
+            color: #c05621;
+        }
+
+        .api-endpoint {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f7fafc;
+            border-radius: 5px;
+        }
+
+        .method {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.85em;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .method-get { background: #38a169; color: white; }
+        .method-post { background: #3182ce; color: white; }
+        .method-put { background: #d69e2e; color: white; }
+        .method-patch { background: #805ad5; color: white; }
+        .method-delete { background: #c53030; color: white; }
+
+        @media print {
+            body { background: white; }
+            section { box-shadow: none; border: 1px solid #ccc; }
+            .nav-tabs { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Accountant CRM - Test Case Documentation</h1>
+            <p>Comprehensive Testing Guide for QA Team</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Version 1.0 | Last Updated: January 2026</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <a href="#overview">Overview</a>
+            <a href="#test-environment">Environment</a>
+            <a href="#user-roles">User Roles</a>
+            <a href="#auth-tests">Authentication</a>
+            <a href="#user-tests">Users</a>
+            <a href="#company-tests">Companies</a>
+            <a href="#service-tests">Services</a>
+            <a href="#request-tests">Requests</a>
+            <a href="#form-tests">Forms</a>
+            <a href="#document-tests">Documents</a>
+            <a href="#invoice-tests">Invoices</a>
+            <a href="#payment-tests">Payments</a>
+            <a href="#notification-tests">Notifications</a>
+            <a href="#analytics-tests">Analytics</a>
+            <a href="#regression">Regression</a>
+            <a href="#feedback">Feedback</a>
+        </nav>
+
+        <!-- Overview Section -->
+        <section id="overview">
+            <h2>Testing Overview</h2>
+
+            <h3>Application Summary</h3>
+            <p>Accountant CRM is a multi-tenant SaaS application for Australian accounting practices. It provides client management, service request tracking, document management, invoicing, and automated communications.</p>
+
+            <h3>Testing Scope</h3>
+            <table>
+                <tr>
+                    <th>Module</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Test Cases</th>
+                </tr>
+                <tr>
+                    <td>Authentication</td>
+                    <td>Login, logout, OTP verification, password reset</td>
+                    <td><span class="priority-high">HIGH</span></td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Users</td>
+                    <td>User management, profiles, invitations</td>
+                    <td><span class="priority-high">HIGH</span></td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Companies</td>
+                    <td>Multi-tenant company management, plans</td>
+                    <td><span class="priority-high">HIGH</span></td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Services</td>
+                    <td>Service catalog, default services</td>
+                    <td><span class="priority-medium">MEDIUM</span></td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>Service Requests</td>
+                    <td>Request workflow, assignments, status tracking</td>
+                    <td><span class="priority-high">HIGH</span></td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <td>Forms</td>
+                    <td>Dynamic forms, responses, conditional logic</td>
+                    <td><span class="priority-medium">MEDIUM</span></td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td>Documents</td>
+                    <td>File upload, download, categorization</td>
+                    <td><span class="priority-medium">MEDIUM</span></td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Invoices</td>
+                    <td>Invoice creation, sending, status management</td>
+                    <td><span class="priority-high">HIGH</span></td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Payments</td>
+                    <td>Stripe integration, checkout, webhooks</td>
+                    <td><span class="priority-high">HIGH</span></td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Notifications</td>
+                    <td>Email templates, automation, bulk email</td>
+                    <td><span class="priority-medium">MEDIUM</span></td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Analytics</td>
+                    <td>Dashboard metrics, reports</td>
+                    <td><span class="priority-low">LOW</span></td>
+                    <td>6</td>
+                </tr>
+            </table>
+
+            <h3>Test Case Format</h3>
+            <div class="info-box">
+                Each test case includes:
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li><strong>Test ID:</strong> Unique identifier (e.g., AUTH-001)</li>
+                    <li><strong>Priority:</strong> HIGH / MEDIUM / LOW</li>
+                    <li><strong>Preconditions:</strong> Setup required before testing</li>
+                    <li><strong>Test Steps:</strong> Step-by-step instructions</li>
+                    <li><strong>Test Data:</strong> Sample data to use</li>
+                    <li><strong>Expected Result:</strong> What should happen</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Test Environment Section -->
+        <section id="test-environment">
+            <h2>Test Environment Setup</h2>
+
+            <h3>Environment URLs</h3>
+            <table>
+                <tr>
+                    <th>Environment</th>
+                    <th>Frontend URL</th>
+                    <th>API URL</th>
+                </tr>
+                <tr>
+                    <td>Development</td>
+                    <td>http://localhost:5173</td>
+                    <td>http://localhost:5000/api</td>
+                </tr>
+                <tr>
+                    <td>Staging</td>
+                    <td>https://staging.accountantcrm.com</td>
+                    <td>https://staging-api.accountantcrm.com/api</td>
+                </tr>
+                <tr>
+                    <td>Production</td>
+                    <td>https://app.accountantcrm.com</td>
+                    <td>https://api.accountantcrm.com/api</td>
+                </tr>
+            </table>
+
+            <h3>Test Accounts</h3>
+            <table>
+                <tr>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Company</th>
+                </tr>
+                <tr>
+                    <td><span class="role-badge role-super-admin">Super Admin</span></td>
+                    <td>superadmin@test.com</td>
+                    <td>TestPass123!</td>
+                    <td>System</td>
+                </tr>
+                <tr>
+                    <td><span class="role-badge role-admin">Admin</span></td>
+                    <td>admin@democompany.com</td>
+                    <td>TestPass123!</td>
+                    <td>Demo Company</td>
+                </tr>
+                <tr>
+                    <td><span class="role-badge role-accountant">Accountant</span></td>
+                    <td>accountant@democompany.com</td>
+                    <td>TestPass123!</td>
+                    <td>Demo Company</td>
+                </tr>
+                <tr>
+                    <td><span class="role-badge role-client">Client</span></td>
+                    <td>client@testclient.com</td>
+                    <td>TestPass123!</td>
+                    <td>Demo Company</td>
+                </tr>
+            </table>
+
+            <h3>Test Tools Required</h3>
+            <ul class="checklist">
+                <li>Postman or similar API testing tool</li>
+                <li>Modern web browser (Chrome, Firefox, Edge)</li>
+                <li>Browser developer tools for network inspection</li>
+                <li>Stripe test mode credentials</li>
+                <li>Access to test email inbox (for OTP verification)</li>
+            </ul>
+
+            <h3>Stripe Test Cards</h3>
+            <table>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Card Number</th>
+                    <th>Expiry</th>
+                    <th>CVC</th>
+                </tr>
+                <tr>
+                    <td>Successful payment</td>
+                    <td><code>4242 4242 4242 4242</code></td>
+                    <td>Any future date</td>
+                    <td>Any 3 digits</td>
+                </tr>
+                <tr>
+                    <td>Declined card</td>
+                    <td><code>4000 0000 0000 0002</code></td>
+                    <td>Any future date</td>
+                    <td>Any 3 digits</td>
+                </tr>
+                <tr>
+                    <td>Insufficient funds</td>
+                    <td><code>4000 0000 0000 9995</code></td>
+                    <td>Any future date</td>
+                    <td>Any 3 digits</td>
+                </tr>
+                <tr>
+                    <td>Requires authentication</td>
+                    <td><code>4000 0025 0000 3155</code></td>
+                    <td>Any future date</td>
+                    <td>Any 3 digits</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- User Roles Section -->
+        <section id="user-roles">
+            <h2>User Roles & Permissions</h2>
+
+            <h3>Role Hierarchy</h3>
+            <table>
+                <tr>
+                    <th>Role</th>
+                    <th>Description</th>
+                    <th>Key Permissions</th>
+                </tr>
+                <tr>
+                    <td><span class="role-badge role-super-admin">Super Admin</span></td>
+                    <td>System-wide administrator</td>
+                    <td>All permissions, manage companies, manage plans</td>
+                </tr>
+                <tr>
+                    <td><span class="role-badge role-admin">Admin</span></td>
+                    <td>Company administrator</td>
+                    <td>Manage company users, settings, all company data</td>
+                </tr>
+                <tr>
+                    <td><span class="role-badge role-accountant">Accountant</span></td>
+                    <td>Staff member</td>
+                    <td>Handle requests, manage clients, create invoices</td>
+                </tr>
+                <tr>
+                    <td><span class="role-badge role-client">Client</span></td>
+                    <td>Customer/end user</td>
+                    <td>View own data, submit requests, make payments</td>
+                </tr>
+            </table>
+
+            <h3>Permission Matrix</h3>
+            <table>
+                <tr>
+                    <th>Action</th>
+                    <th><span class="role-badge role-super-admin">SA</span></th>
+                    <th><span class="role-badge role-admin">Admin</span></th>
+                    <th><span class="role-badge role-accountant">Acct</span></th>
+                    <th><span class="role-badge role-client">Client</span></th>
+                </tr>
+                <tr>
+                    <td>Create Company</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Manage Company Plans</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Invite Users</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Manage Services</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Assign Requests</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Update Request Status</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Create Invoice</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Submit Request</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Make Payment</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>View Analytics</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>Limited</td>
+                    <td>No</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Authentication Tests -->
+        <section id="auth-tests">
+            <h2>Authentication Test Cases</h2>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">AUTH-001</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Valid Login with Email and Password</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> User account exists and is active
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Navigate to login page</li>
+                        <li>Enter valid email: <code>admin@democompany.com</code></li>
+                        <li>Enter valid password: <code>TestPass123!</code></li>
+                        <li>Click "Login" button</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@democompany.com",
+  "password": "TestPass123!"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Response contains access_token and refresh_token</li>
+                        <li>User is redirected to dashboard</li>
+                        <li>If 2FA enabled: OTP verification page shown</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">AUTH-002</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Invalid Login - Wrong Password</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> User account exists
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Navigate to login page</li>
+                        <li>Enter valid email: <code>admin@democompany.com</code></li>
+                        <li>Enter wrong password: <code>WrongPassword123</code></li>
+                        <li>Click "Login" button</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 401 Unauthorized</li>
+                        <li>Error message: "Invalid email or password"</li>
+                        <li>User remains on login page</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">AUTH-003</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Invalid Login - Non-existent User</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Navigate to login page</li>
+                        <li>Enter non-existent email: <code>nonexistent@test.com</code></li>
+                        <li>Enter any password</li>
+                        <li>Click "Login" button</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 401 Unauthorized</li>
+                        <li>Error message: "Invalid email or password"</li>
+                        <li>No information leakage about user existence</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">AUTH-004</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>OTP Verification - Valid Code</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> User has 2FA enabled, OTP sent via email
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Complete initial login (triggers OTP)</li>
+                        <li>Check email for OTP code</li>
+                        <li>Enter valid 6-digit OTP</li>
+                        <li>Click "Verify" button</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/auth/verify-otp
+Content-Type: application/json
+
+{
+  "email": "admin@democompany.com",
+  "otp": "123456"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Access token issued</li>
+                        <li>User redirected to dashboard</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">AUTH-005</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>OTP Verification - Expired Code</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> OTP was sent more than 10 minutes ago
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Request OTP</li>
+                        <li>Wait 10+ minutes (or modify test DB)</li>
+                        <li>Enter the OTP code</li>
+                        <li>Click "Verify" button</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 400 Bad Request</li>
+                        <li>Error message: "OTP has expired"</li>
+                        <li>Option to resend OTP displayed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">AUTH-006</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Token Refresh</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> User has valid refresh token
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Login and obtain tokens</li>
+                        <li>Use refresh token to get new access token</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/auth/refresh
+Content-Type: application/json
+
+{
+  "refresh_token": "eyJ..."
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>New access_token issued</li>
+                        <li>Optionally new refresh_token issued</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">AUTH-007</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Logout</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> User is logged in
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Click logout button or call logout API</li>
+                        <li>Try to access protected endpoint with old token</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK for logout</li>
+                        <li>Token invalidated</li>
+                        <li>Subsequent requests with old token return 401</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">AUTH-008</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Forgot Password - Valid Email</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Navigate to forgot password page</li>
+                        <li>Enter registered email</li>
+                        <li>Submit request</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/auth/forgot-password
+Content-Type: application/json
+
+{
+  "email": "admin@democompany.com"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>OTP sent to email</li>
+                        <li>Success message displayed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">AUTH-009</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Reset Password with OTP</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Forgot password OTP received
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Enter OTP from email</li>
+                        <li>Enter new password</li>
+                        <li>Confirm new password</li>
+                        <li>Submit reset</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/auth/reset-password
+Content-Type: application/json
+
+{
+  "email": "admin@democompany.com",
+  "otp": "123456",
+  "new_password": "NewPass123!"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Password updated</li>
+                        <li>Can login with new password</li>
+                        <li>Old password no longer works</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">AUTH-010</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Login - Deactivated Account</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> User account has been deactivated
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Attempt to login with deactivated account credentials</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 401 or 403</li>
+                        <li>Error message indicates account is deactivated</li>
+                        <li>User cannot access the system</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Tests -->
+        <section id="user-tests">
+            <h2>User Management Test Cases</h2>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">USER-001</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Get Current User Profile</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> User is logged in with valid token
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call GET /api/users/me with valid token</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>GET /api/users/me
+Authorization: Bearer &lt;access_token&gt;</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Returns user object with: id, email, first_name, last_name, role, company_id</li>
+                        <li>Sensitive data (password hash) NOT returned</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">USER-002</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Update User Profile</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> User is logged in
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call PATCH /api/users/me with updated fields</li>
+                        <li>Verify profile changes persisted</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>PATCH /api/users/me
+Authorization: Bearer &lt;access_token&gt;
+Content-Type: application/json
+
+{
+  "first_name": "Updated",
+  "last_name": "Name",
+  "phone": "+61 400 123 456"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Profile updated with new values</li>
+                        <li>Cannot change email or role via this endpoint</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">USER-003</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Invite New User (Admin)</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin, within user limit for plan
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Navigate to user management</li>
+                        <li>Click "Invite User"</li>
+                        <li>Enter email, select role</li>
+                        <li>Submit invitation</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/users/invite
+Authorization: Bearer &lt;admin_token&gt;
+Content-Type: application/json
+
+{
+  "email": "newuser@test.com",
+  "role": "accountant",
+  "first_name": "New",
+  "last_name": "User"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 201 Created</li>
+                        <li>Invitation email sent to new user</li>
+                        <li>User created with pending status</li>
+                        <li>User count incremented for company</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">USER-004</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Invite User - Plan Limit Exceeded</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Company at user limit for current plan
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Ensure company has reached user limit (e.g., 5 users on Starter)</li>
+                        <li>Attempt to invite another user</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 403 Forbidden</li>
+                        <li>Error message about plan limit</li>
+                        <li>Suggestion to upgrade plan</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">USER-005</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>List Users (Admin)</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call GET /api/users</li>
+                        <li>Test pagination parameters</li>
+                        <li>Test filter by role</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>GET /api/users?page=1&per_page=20&role=accountant
+Authorization: Bearer &lt;admin_token&gt;</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Returns only users from same company</li>
+                        <li>Pagination info included</li>
+                        <li>Filtered results if role specified</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">USER-006</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Deactivate User (Admin)</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin, target user exists in same company
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call DELETE /api/users/:id</li>
+                        <li>Verify user status changed to inactive</li>
+                        <li>Verify user can no longer login</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>User marked as inactive (soft delete)</li>
+                        <li>User's tokens invalidated</li>
+                        <li>User cannot login anymore</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">USER-007</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Access User from Different Company</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin of Company A, User belongs to Company B
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Get user ID from Company B</li>
+                        <li>Attempt to access GET /api/users/:id</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 403 Forbidden or 404 Not Found</li>
+                        <li>Cannot access users from other companies</li>
+                        <li>Multi-tenant isolation maintained</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Tests -->
+        <section id="company-tests">
+            <h2>Company Management Test Cases</h2>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">COMP-001</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Create Company (Super Admin)</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Super Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call POST /api/companies with company details</li>
+                        <li>Verify company created with default plan</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/companies
+Authorization: Bearer &lt;super_admin_token&gt;
+Content-Type: application/json
+
+{
+  "name": "New Test Company",
+  "abn": "12345678901",
+  "email": "admin@newtestcompany.com",
+  "plan": "starter"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 201 Created</li>
+                        <li>Company created with provided details</li>
+                        <li>Default admin user created for company</li>
+                        <li>Plan limits applied</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">COMP-002</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Create Company (Non Super Admin - Should Fail)</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin or Accountant
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Attempt to call POST /api/companies</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 403 Forbidden</li>
+                        <li>Only Super Admin can create companies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">COMP-003</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Get My Company Details</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as any user with company
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call GET /api/companies/my-company</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Returns company details for user's company</li>
+                        <li>Includes plan information</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">COMP-004</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Update Company Details (Admin)</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call PUT /api/companies/:id with updated details</li>
+                        <li>Verify changes persisted</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>PUT /api/companies/1
+Authorization: Bearer &lt;admin_token&gt;
+Content-Type: application/json
+
+{
+  "name": "Updated Company Name",
+  "phone": "+61 2 1234 5678",
+  "address": "123 Updated Street"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Company details updated</li>
+                        <li>Cannot change plan via this endpoint</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">COMP-005</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Get Plan Usage Statistics</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call GET /api/companies/my-company/usage</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Returns current user count vs limit</li>
+                        <li>Returns current client count vs limit</li>
+                        <li>Returns storage usage if applicable</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">COMP-006</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Update Company Plan (Super Admin)</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Super Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call PATCH /api/companies/:id/plan</li>
+                        <li>Verify plan limits updated</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>PATCH /api/companies/1/plan
+Authorization: Bearer &lt;super_admin_token&gt;
+Content-Type: application/json
+
+{
+  "plan": "premium"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Company plan updated</li>
+                        <li>New limits applied immediately</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Tests -->
+        <section id="service-tests">
+            <h2>Services Test Cases</h2>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">SVC-001</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>List Available Services</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as any user
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call GET /api/services</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Returns list of active services for company</li>
+                        <li>Includes service name, description, base_price</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">SVC-002</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Create Custom Service (Admin)</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call POST /api/services with service details</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/services
+Authorization: Bearer &lt;admin_token&gt;
+Content-Type: application/json
+
+{
+  "name": "SMSF Audit",
+  "description": "Annual SMSF compliance audit",
+  "base_price": 1500.00,
+  "category": "smsf",
+  "is_active": true
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 201 Created</li>
+                        <li>Service created for company</li>
+                        <li>Appears in services list</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">SVC-003</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Activate Default Service</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin, default services available
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Get list of default services: GET /api/services/defaults</li>
+                        <li>Activate a default service: POST /api/services/defaults/:id/activate</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Default service added to company</li>
+                        <li>Can customize pricing for company</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">SVC-004</span>
+                    <span class="priority-low">LOW</span>
+                </div>
+                <h4>Update Service Details</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin, service exists
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call PUT /api/services/:id with updated details</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Service details updated</li>
+                        <li>Existing requests using service not affected</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">SVC-005</span>
+                    <span class="priority-low">LOW</span>
+                </div>
+                <h4>Delete/Deactivate Service</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin, service exists
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call DELETE /api/services/:id</li>
+                        <li>Verify service no longer in active list</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Service deactivated (soft delete)</li>
+                        <li>Existing requests not affected</li>
+                        <li>Service not available for new requests</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Request Tests -->
+        <section id="request-tests">
+            <h2>Service Request Test Cases</h2>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">REQ-001</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Client Creates Service Request</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Client
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Navigate to services page</li>
+                        <li>Select a service</li>
+                        <li>Fill required form (if any)</li>
+                        <li>Submit request</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/requests
+Authorization: Bearer &lt;client_token&gt;
+Content-Type: application/json
+
+{
+  "service_id": 1,
+  "description": "Need to file my annual tax return",
+  "financial_year": "2024-25"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 201 Created</li>
+                        <li>Request created with status "submitted"</li>
+                        <li>Request number generated</li>
+                        <li>Notification sent to admin/accountants</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">REQ-002</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>List Requests (Role-based filtering)</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Multiple requests exist
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Login as Client - should see only own requests</li>
+                        <li>Login as Accountant - should see assigned requests</li>
+                        <li>Login as Admin - should see all company requests</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Client: sees only requests they submitted</li>
+                        <li>Accountant: sees requests assigned to them</li>
+                        <li>Admin: sees all requests in company</li>
+                        <li>Each view filters appropriately</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">REQ-003</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Assign Request to Accountant</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin, unassigned request exists
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>View unassigned request</li>
+                        <li>Select accountant from dropdown</li>
+                        <li>Assign request</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>PUT /api/requests/1/assign
+Authorization: Bearer &lt;admin_token&gt;
+Content-Type: application/json
+
+{
+  "accountant_id": 5
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Request assigned to accountant</li>
+                        <li>Notification sent to accountant</li>
+                        <li>Request status updated to "in_progress"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">REQ-004</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Update Request Status</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Accountant, request assigned to them
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>View assigned request</li>
+                        <li>Change status (e.g., to "pending_info")</li>
+                        <li>Save changes</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>PUT /api/requests/1/status
+Authorization: Bearer &lt;accountant_token&gt;
+Content-Type: application/json
+
+{
+  "status": "pending_info",
+  "notes": "Waiting for bank statements"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Status updated</li>
+                        <li>Status history recorded</li>
+                        <li>Client notified of status change</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">REQ-005</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Request Status Workflow</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Test complete workflow: submitted -> in_progress -> pending_info -> in_progress -> review -> completed</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <p>Valid status transitions:</p>
+                    <table>
+                        <tr><th>From</th><th>To (Valid)</th></tr>
+                        <tr><td>submitted</td><td>in_progress, cancelled</td></tr>
+                        <tr><td>in_progress</td><td>pending_info, review, on_hold, cancelled</td></tr>
+                        <tr><td>pending_info</td><td>in_progress, cancelled</td></tr>
+                        <tr><td>review</td><td>in_progress, completed</td></tr>
+                        <tr><td>on_hold</td><td>in_progress, cancelled</td></tr>
+                        <tr><td>completed</td><td>(final state)</td></tr>
+                        <tr><td>cancelled</td><td>(final state)</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">REQ-006</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Add Internal Note to Request</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Accountant/Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Open request detail</li>
+                        <li>Add internal note</li>
+                        <li>Verify note is saved</li>
+                        <li>Verify client cannot see internal notes</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/requests/1/notes
+Authorization: Bearer &lt;accountant_token&gt;
+Content-Type: application/json
+
+{
+  "content": "Client mentioned they lost receipts for deductions",
+  "is_internal": true
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Note saved to request</li>
+                        <li>Note visible to staff only</li>
+                        <li>Client cannot see internal notes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">REQ-007</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Create Query on Request</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Accountant, request in progress
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Open request</li>
+                        <li>Create query for client</li>
+                        <li>Verify client receives notification</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/requests/1/queries
+Authorization: Bearer &lt;accountant_token&gt;
+Content-Type: application/json
+
+{
+  "question": "Please provide your bank statements for July-December 2024",
+  "due_date": "2025-02-15"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Query created</li>
+                        <li>Client notified</li>
+                        <li>Request status may change to pending_info</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">REQ-008</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Client Responds to Query</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Client, open query exists
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>View request with queries</li>
+                        <li>Respond to query with text/documents</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response saved</li>
+                        <li>Accountant notified</li>
+                        <li>Query marked as answered</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Tests -->
+        <section id="form-tests">
+            <h2>Forms Test Cases</h2>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">FORM-001</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Create Dynamic Form (Admin)</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Navigate to form builder</li>
+                        <li>Add various field types (text, dropdown, checkbox, file upload)</li>
+                        <li>Add conditional logic</li>
+                        <li>Save form</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/forms
+Authorization: Bearer &lt;admin_token&gt;
+Content-Type: application/json
+
+{
+  "name": "Tax Return Information",
+  "description": "Collect client tax information",
+  "fields": [
+    {
+      "name": "employment_type",
+      "label": "Employment Type",
+      "type": "select",
+      "options": ["Employee", "Self-employed", "Both"],
+      "required": true
+    },
+    {
+      "name": "abn",
+      "label": "ABN",
+      "type": "text",
+      "required": false,
+      "conditions": [
+        {"field": "employment_type", "operator": "in", "value": ["Self-employed", "Both"]}
+      ]
+    }
+  ]
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Form created successfully</li>
+                        <li>Fields stored with proper types</li>
+                        <li>Conditional logic saved</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">FORM-002</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Submit Form Response (Client)</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Client, form exists
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Open form</li>
+                        <li>Fill all required fields</li>
+                        <li>Test conditional field visibility</li>
+                        <li>Submit form</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/forms/1/responses
+Authorization: Bearer &lt;client_token&gt;
+Content-Type: application/json
+
+{
+  "responses": {
+    "employment_type": "Self-employed",
+    "abn": "12345678901"
+  }
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response saved</li>
+                        <li>Validation passed</li>
+                        <li>Conditional fields validated only if shown</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">FORM-003</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Form Validation - Required Fields</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Open form with required fields</li>
+                        <li>Leave required fields empty</li>
+                        <li>Submit form</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 400 Bad Request</li>
+                        <li>Error message identifies missing required fields</li>
+                        <li>Form not submitted</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">FORM-004</span>
+                    <span class="priority-low">LOW</span>
+                </div>
+                <h4>Clone Form</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin, form exists
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Select existing form</li>
+                        <li>Clone form</li>
+                        <li>Verify new form created with same fields</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>New form created</li>
+                        <li>All fields copied</li>
+                        <li>New form has different ID</li>
+                        <li>Original form unchanged</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">FORM-005</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Activate Default Form</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>View default forms: GET /api/forms/defaults</li>
+                        <li>Clone default to company forms</li>
+                        <li>Customize if needed</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Default form templates available</li>
+                        <li>Can clone to company</li>
+                        <li>Cloned form is editable</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Document Tests -->
+        <section id="document-tests">
+            <h2>Document Management Test Cases</h2>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">DOC-001</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Upload Document</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as any user
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Select file to upload</li>
+                        <li>Add category and description</li>
+                        <li>Upload file</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/documents
+Authorization: Bearer &lt;token&gt;
+Content-Type: multipart/form-data
+
+file: [binary file data]
+category: "tax_return"
+description: "2024 Tax Return"
+request_id: 1 (optional)</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 201 Created</li>
+                        <li>File uploaded to Azure Blob Storage</li>
+                        <li>Document record created in database</li>
+                        <li>Returns document ID and metadata</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">DOC-002</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Upload Document - File Type Validation</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Attempt to upload .exe file</li>
+                        <li>Attempt to upload .php file</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 400 Bad Request</li>
+                        <li>Error: "File type not allowed"</li>
+                        <li>Allowed: pdf, png, jpg, jpeg, doc, docx, xls, xlsx, csv, txt</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">DOC-003</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Upload Document - Size Limit</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Attempt to upload file larger than 50MB</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 413 Payload Too Large</li>
+                        <li>Error message about size limit</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">DOC-004</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Download Document</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Document exists, user has access
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Request download URL: GET /api/documents/:id/download</li>
+                        <li>Use returned URL to download file</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Returns signed URL or file stream</li>
+                        <li>File downloads correctly</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">DOC-005</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Document Access Control</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Document belongs to different user/company
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Get document ID from different company</li>
+                        <li>Attempt to access: GET /api/documents/:id</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 403 or 404</li>
+                        <li>Cannot access documents from other companies</li>
+                        <li>Clients can only see their own documents</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">DOC-006</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Delete Document</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as owner or admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call DELETE /api/documents/:id</li>
+                        <li>Verify document removed</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Document marked as deleted or removed</li>
+                        <li>File removed from storage (or soft delete)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Invoice Tests -->
+        <section id="invoice-tests">
+            <h2>Invoice Test Cases</h2>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">INV-001</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Create Invoice</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Accountant/Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Select client</li>
+                        <li>Add line items with description and amount</li>
+                        <li>Set due date</li>
+                        <li>Create invoice</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/services/invoices
+Authorization: Bearer &lt;accountant_token&gt;
+Content-Type: application/json
+
+{
+  "client_id": 10,
+  "request_id": 5,
+  "line_items": [
+    {
+      "description": "Tax Return Preparation",
+      "quantity": 1,
+      "unit_price": 550.00
+    },
+    {
+      "description": "BAS Lodgement",
+      "quantity": 1,
+      "unit_price": 150.00
+    }
+  ],
+  "due_date": "2025-02-28",
+  "notes": "Payment due within 14 days"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 201 Created</li>
+                        <li>Invoice number generated (e.g., INV-2025-001)</li>
+                        <li>GST calculated automatically (10%)</li>
+                        <li>Total calculated correctly</li>
+                        <li>Status: draft</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">INV-002</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Send Invoice to Client</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Invoice exists in draft status
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call POST /api/services/invoices/:id/send</li>
+                        <li>Verify email sent to client</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Invoice status changed to "sent"</li>
+                        <li>Email sent to client with invoice details</li>
+                        <li>Payment link included in email</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">INV-003</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Invoice GST Calculation</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Create invoice with line items</li>
+                        <li>Verify subtotal calculation</li>
+                        <li>Verify GST (10%) calculation</li>
+                        <li>Verify total calculation</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>Sample Calculation:</strong>
+                    <pre><code>Line Item 1: $550.00
+Line Item 2: $150.00
+---
+Subtotal: $700.00
+GST (10%): $70.00
+Total: $770.00</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Subtotal correctly sums line items</li>
+                        <li>GST is exactly 10% of subtotal</li>
+                        <li>Total = Subtotal + GST</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">INV-004</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Record Manual Payment</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Invoice sent, not fully paid
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Add manual payment (e.g., bank transfer)</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/services/invoices/1/payments
+Authorization: Bearer &lt;admin_token&gt;
+Content-Type: application/json
+
+{
+  "amount": 770.00,
+  "method": "bank_transfer",
+  "reference": "REF123456",
+  "payment_date": "2025-01-15"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Payment recorded</li>
+                        <li>Invoice balance updated</li>
+                        <li>If fully paid, status changes to "paid"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">INV-005</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Partial Payment</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Record payment less than total</li>
+                        <li>Verify remaining balance</li>
+                        <li>Record another payment for remaining</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>First payment: status remains "sent" or "partial"</li>
+                        <li>Balance reflects remaining amount</li>
+                        <li>Second payment: status changes to "paid"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">INV-006</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Cancel Invoice</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Invoice exists, not paid
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call POST /api/services/invoices/:id/cancel</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Invoice status: cancelled</li>
+                        <li>Cannot modify cancelled invoice</li>
+                        <li>Cannot pay cancelled invoice</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Tests -->
+        <section id="payment-tests">
+            <h2>Payment (Stripe) Test Cases</h2>
+
+            <div class="info-box">
+                <strong>Important:</strong> All payment tests should use Stripe test mode. Use test card numbers provided in the Environment Setup section.
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">PAY-001</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Create Stripe Checkout Session</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Client, unpaid invoice exists
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>View invoice details</li>
+                        <li>Click "Pay Now" button</li>
+                        <li>Verify redirect to Stripe Checkout</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/payments/invoices/1/checkout
+Authorization: Bearer &lt;client_token&gt;</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Response status: 200 OK</li>
+                        <li>Returns Stripe checkout URL</li>
+                        <li>Checkout page shows correct amount</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">PAY-002</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Successful Payment Flow</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Create checkout session</li>
+                        <li>Complete payment with test card <code>4242 4242 4242 4242</code></li>
+                        <li>Verify return to success page</li>
+                        <li>Verify invoice status updated</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Payment processes successfully</li>
+                        <li>Webhook received (checkout.session.completed)</li>
+                        <li>Invoice status: paid</li>
+                        <li>Payment record created</li>
+                        <li>Client receives receipt email</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">PAY-003</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Declined Card Payment</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Create checkout session</li>
+                        <li>Attempt payment with test card <code>4000 0000 0000 0002</code></li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Payment declined by Stripe</li>
+                        <li>Error message shown to user</li>
+                        <li>Invoice remains unpaid</li>
+                        <li>User can retry with different card</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">PAY-004</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Generate Payment Link</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Accountant/Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Generate payment link for invoice</li>
+                        <li>Verify link can be used without login</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/payments/invoices/1/payment-link
+Authorization: Bearer &lt;accountant_token&gt;</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Returns shareable payment link</li>
+                        <li>Link works without authentication</li>
+                        <li>Shows invoice details and payment form</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">PAY-005</span>
+                    <span class="priority-high">HIGH</span>
+                </div>
+                <h4>Stripe Webhook - Payment Success</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Complete a payment</li>
+                        <li>Verify webhook endpoint receives event</li>
+                        <li>Verify invoice updated</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Webhook received at POST /api/payments/webhooks/stripe</li>
+                        <li>Signature verified</li>
+                        <li>Invoice status updated to paid</li>
+                        <li>Payment record created with Stripe transaction ID</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">PAY-006</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>3D Secure Authentication</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Create checkout session</li>
+                        <li>Use test card <code>4000 0025 0000 3155</code></li>
+                        <li>Complete 3D Secure challenge</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>3DS popup/redirect shown</li>
+                        <li>After authentication, payment completes</li>
+                        <li>Invoice marked as paid</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">PAY-007</span>
+                    <span class="priority-low">LOW</span>
+                </div>
+                <h4>Get Payment History for Invoice</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Make one or more payments on invoice</li>
+                        <li>Retrieve payment history</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>GET /api/payments/invoices/1/payments
+Authorization: Bearer &lt;token&gt;</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Returns list of all payments for invoice</li>
+                        <li>Includes amount, date, method, reference</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notification Tests -->
+        <section id="notification-tests">
+            <h2>Notification & Email Test Cases</h2>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">NOTIF-001</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>View Notifications</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> User has unread notifications
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call GET /api/notifications</li>
+                        <li>Verify notifications returned</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Returns list of notifications</li>
+                        <li>Includes type, title, message, timestamp</li>
+                        <li>Shows read/unread status</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">NOTIF-002</span>
+                    <span class="priority-low">LOW</span>
+                </div>
+                <h4>Mark Notification as Read</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Get unread notification ID</li>
+                        <li>Mark as read: PATCH /api/notifications/:id/read</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Notification marked as read</li>
+                        <li>Unread count decremented</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">NOTIF-003</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Create Email Template</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Navigate to email templates</li>
+                        <li>Create new template with variables</li>
+                        <li>Save template</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/notifications/email-templates
+Authorization: Bearer &lt;admin_token&gt;
+Content-Type: application/json
+
+{
+  "name": "Welcome Email",
+  "subject": "Welcome to {{company_name}}!",
+  "body": "Hello {{client_name}},\n\nWelcome to our practice...",
+  "category": "onboarding"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Template saved</li>
+                        <li>Variables parsed correctly</li>
+                        <li>Available for automation triggers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">NOTIF-004</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Send Bulk Email</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin, email template exists
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Select template</li>
+                        <li>Filter recipients (e.g., all clients with tag "tax")</li>
+                        <li>Preview recipients</li>
+                        <li>Send bulk email</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request (Preview):</strong>
+                    <pre><code>POST /api/notifications/bulk-email/preview
+Authorization: Bearer &lt;admin_token&gt;
+Content-Type: application/json
+
+{
+  "filters": {
+    "role": "client",
+    "tags": ["tax-2024"]
+  }
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Preview shows correct recipient count</li>
+                        <li>Emails sent to all matching recipients</li>
+                        <li>Variables replaced with actual values</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">NOTIF-005</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Create Email Automation</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin, email template exists
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Select trigger type (e.g., "request_submitted")</li>
+                        <li>Select email template</li>
+                        <li>Configure conditions</li>
+                        <li>Activate automation</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/notifications/automations
+Authorization: Bearer &lt;admin_token&gt;
+Content-Type: application/json
+
+{
+  "name": "New Request Confirmation",
+  "trigger_type": "request_submitted",
+  "template_id": 1,
+  "is_active": true,
+  "conditions": {
+    "service_category": "tax"
+  }
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Automation created and active</li>
+                        <li>When trigger fires, email sent automatically</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">NOTIF-006</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Test Automation Triggers</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Create automation for each trigger type</li>
+                        <li>Trigger each event</li>
+                        <li>Verify email sent</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Available Triggers to Test:</strong>
+                    <table>
+                        <tr><th>Trigger</th><th>Event</th></tr>
+                        <tr><td>request_submitted</td><td>New request created</td></tr>
+                        <tr><td>request_assigned</td><td>Request assigned to accountant</td></tr>
+                        <tr><td>request_status_changed</td><td>Request status updated</td></tr>
+                        <tr><td>request_completed</td><td>Request completed</td></tr>
+                        <tr><td>invoice_created</td><td>New invoice created</td></tr>
+                        <tr><td>invoice_sent</td><td>Invoice sent to client</td></tr>
+                        <tr><td>payment_received</td><td>Payment recorded</td></tr>
+                        <tr><td>document_uploaded</td><td>Document added</td></tr>
+                        <tr><td>query_created</td><td>Query sent to client</td></tr>
+                        <tr><td>client_registered</td><td>New client signup</td></tr>
+                        <tr><td>user_invited</td><td>User invitation sent</td></tr>
+                        <tr><td>due_date_reminder</td><td>Scheduled reminder</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">NOTIF-007</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Schedule Email</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Create scheduled email for future time</li>
+                        <li>Verify it appears in scheduled list</li>
+                        <li>Wait for scheduled time</li>
+                        <li>Verify email sent</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>POST /api/notifications/scheduled-emails
+Authorization: Bearer &lt;admin_token&gt;
+Content-Type: application/json
+
+{
+  "template_id": 1,
+  "recipient_type": "all_clients",
+  "scheduled_for": "2025-02-01T09:00:00Z"
+}</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Email scheduled</li>
+                        <li>Appears in scheduled list</li>
+                        <li>Sent at scheduled time</li>
+                        <li>Status updated after sending</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Tests -->
+        <section id="analytics-tests">
+            <h2>Analytics Test Cases</h2>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">ANLYT-001</span>
+                    <span class="priority-medium">MEDIUM</span>
+                </div>
+                <h4>Dashboard Metrics</h4>
+                <div class="precondition">
+                    <strong>Preconditions:</strong> Logged in as Admin
+                </div>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Navigate to dashboard</li>
+                        <li>Verify metrics displayed</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>GET /api/analytics/dashboard
+Authorization: Bearer &lt;admin_token&gt;</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Total clients count</li>
+                        <li>Active requests count</li>
+                        <li>Pending invoices amount</li>
+                        <li>Revenue this month</li>
+                        <li>Request completion rate</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">ANLYT-002</span>
+                    <span class="priority-low">LOW</span>
+                </div>
+                <h4>Revenue Statistics</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call GET /api/analytics/revenue with date range</li>
+                    </ol>
+                </div>
+                <div class="test-data">
+                    <strong>API Request:</strong>
+                    <pre><code>GET /api/analytics/revenue?start_date=2025-01-01&end_date=2025-01-31
+Authorization: Bearer &lt;admin_token&gt;</code></pre>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Total revenue for period</li>
+                        <li>Revenue by service type</li>
+                        <li>Comparison with previous period</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-id">ANLYT-003</span>
+                    <span class="priority-low">LOW</span>
+                </div>
+                <h4>Team Workload Report</h4>
+                <div class="test-steps">
+                    <strong>Test Steps:</strong>
+                    <ol>
+                        <li>Call GET /api/analytics/workload</li>
+                    </ol>
+                </div>
+                <div class="expected-result">
+                    <strong>Expected Result:</strong>
+                    <ul>
+                        <li>Requests per accountant</li>
+                        <li>Open vs completed ratio</li>
+                        <li>Average time to completion</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regression Tests -->
+        <section id="regression">
+            <h2>Regression Test Checklist</h2>
+
+            <h3>Critical Path Tests</h3>
+            <p>Run these tests before any release:</p>
+
+            <ul class="checklist">
+                <li><strong>AUTH-001:</strong> User can login with valid credentials</li>
+                <li><strong>AUTH-004:</strong> OTP verification works correctly</li>
+                <li><strong>USER-003:</strong> Admin can invite new users</li>
+                <li><strong>REQ-001:</strong> Client can submit service request</li>
+                <li><strong>REQ-003:</strong> Admin can assign request to accountant</li>
+                <li><strong>REQ-004:</strong> Accountant can update request status</li>
+                <li><strong>INV-001:</strong> Invoice can be created</li>
+                <li><strong>INV-002:</strong> Invoice can be sent to client</li>
+                <li><strong>PAY-002:</strong> Client can complete Stripe payment</li>
+                <li><strong>DOC-001:</strong> Document upload works correctly</li>
+            </ul>
+
+            <h3>Security Tests</h3>
+            <ul class="checklist">
+                <li><strong>AUTH-002:</strong> Invalid password rejected</li>
+                <li><strong>AUTH-010:</strong> Deactivated accounts cannot login</li>
+                <li><strong>USER-007:</strong> Cannot access other company's users</li>
+                <li><strong>DOC-005:</strong> Cannot access other company's documents</li>
+                <li>Test expired JWT tokens are rejected</li>
+                <li>Test invalid JWT signatures are rejected</li>
+                <li>Test SQL injection attempts in all inputs</li>
+                <li>Test XSS attempts in form fields</li>
+            </ul>
+
+            <h3>Performance Tests</h3>
+            <ul class="checklist">
+                <li>Login response time under 2 seconds</li>
+                <li>List endpoints return within 3 seconds</li>
+                <li>File upload completes within 30 seconds for 10MB file</li>
+                <li>Dashboard loads within 5 seconds</li>
+            </ul>
+        </section>
+
+        <!-- Feedback Section -->
+        <section id="feedback">
+            <h2>Tester Feedback</h2>
+
+            <div class="feedback-section">
+                <h4>How to Report Issues</h4>
+                <p>When you find a bug or have feedback, please provide:</p>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Test Case ID:</strong> Which test case was affected (e.g., AUTH-001)</li>
+                    <li><strong>Environment:</strong> Dev/Staging/Production</li>
+                    <li><strong>Steps to Reproduce:</strong> Exact steps that caused the issue</li>
+                    <li><strong>Expected Result:</strong> What should have happened</li>
+                    <li><strong>Actual Result:</strong> What actually happened</li>
+                    <li><strong>Screenshots/Video:</strong> Visual evidence if applicable</li>
+                    <li><strong>Console Errors:</strong> Any browser console errors</li>
+                    <li><strong>API Response:</strong> Full API response if API test</li>
+                </ol>
+            </div>
+
+            <div class="feedback-section">
+                <h4>Bug Report Template</h4>
+                <pre style="background: white; padding: 15px; border: 1px solid #ddd;">
+**Test Case ID:** [e.g., AUTH-001]
+**Severity:** [Critical/High/Medium/Low]
+**Environment:** [Dev/Staging/Production]
+
+**Description:**
+[Brief description of the issue]
+
+**Steps to Reproduce:**
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+
+**Expected Result:**
+[What should happen]
+
+**Actual Result:**
+[What actually happened]
+
+**Additional Info:**
+- Browser: [e.g., Chrome 120]
+- Screen resolution: [e.g., 1920x1080]
+- API Response (if applicable):
+```
+[paste response here]
+```
+
+**Screenshots:**
+[Attach screenshots]
+                </pre>
+            </div>
+
+            <div class="feedback-section">
+                <h4>Feedback Categories</h4>
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Bug</td>
+                        <td>Something doesn't work as documented</td>
+                    </tr>
+                    <tr>
+                        <td>Enhancement</td>
+                        <td>Suggestion to improve existing functionality</td>
+                    </tr>
+                    <tr>
+                        <td>UX Issue</td>
+                        <td>Confusing or difficult user experience</td>
+                    </tr>
+                    <tr>
+                        <td>Documentation</td>
+                        <td>Test case needs clarification or update</td>
+                    </tr>
+                    <tr>
+                        <td>Missing Test</td>
+                        <td>Scenario not covered by existing test cases</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="feedback-section">
+                <h4>Contact</h4>
+                <p>Submit your feedback to:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Email: qa@accountantcrm.com</li>
+                    <li>Slack: #qa-feedback channel</li>
+                    <li>Jira: Create issue in ACRM project</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer style="text-align: center; padding: 30px; color: #718096;">
+            <p>Accountant CRM Test Documentation v1.0</p>
+            <p>Last Updated: January 2026</p>
+        </footer>
+    </div>
+</body>
+</html>

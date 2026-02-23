@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accountant CRM - Business Development Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-dark: #4338CA;
+            --primary-light: #EEF2FF;
+            --secondary: #10B981;
+            --secondary-light: #D1FAE5;
+            --warning: #F59E0B;
+            --warning-light: #FEF3C7;
+            --danger: #EF4444;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-700);
+            background: var(--gray-50);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .nav a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            white-space: nowrap;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--gray-500);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            margin-bottom: 24px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card h3 .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            color: var(--gray-600);
+            margin-bottom: 16px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--gray-600);
+        }
+
+        .card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Pain Points */
+        .pain-point {
+            display: flex;
+            gap: 16px;
+            padding: 20px;
+            background: var(--gray-50);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--danger);
+        }
+
+        .pain-point .icon {
+            font-size: 1.5rem;
+        }
+
+        .pain-point h4 {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .pain-point p {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid var(--gray-100);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .feature-card .number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .feature-card .description {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .feature-card .benefits {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .feature-card .benefits li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .feature-card .benefits li::before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .feature-card .value-prop {
+            background: var(--primary-light);
+            padding: 16px;
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--primary-dark);
+            font-size: 0.875rem;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 24px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        th {
+            background: var(--gray-800);
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            color: var(--gray-600);
+        }
+
+        tr:hover td {
+            background: var(--gray-50);
+        }
+
+        /* Use Cases */
+        .use-case {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 24px;
+        }
+
+        .use-case-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 24px 32px;
+        }
+
+        .use-case-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .use-case-header p {
+            opacity: 0.9;
+            font-size: 0.875rem;
+        }
+
+        .use-case-content {
+            padding: 32px;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .before, .after {
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .before {
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+        }
+
+        .before h4 {
+            color: var(--danger);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .after {
+            background: var(--secondary-light);
+            border: 1px solid #A7F3D0;
+        }
+
+        .after h4 {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .before ul, .after ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.875rem;
+        }
+
+        .before ul li, .after ul li {
+            padding: 4px 0;
+            color: var(--gray-600);
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(79, 70, 229, 0.15);
+        }
+
+        .pricing-card .plan-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .plan-target {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-bottom: 20px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .pricing-card .price-period {
+            color: var(--gray-400);
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+        }
+
+        .pricing-card .features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .pricing-card .features li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .pricing-card .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Objections */
+        .objection {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--warning);
+        }
+
+        .objection .question {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .objection .question::before {
+            content: 'Q';
+            background: var(--warning-light);
+            color: var(--warning);
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .objection .answer {
+            padding-left: 36px;
+            color: var(--gray-600);
+            font-size: 0.9375rem;
+        }
+
+        /* Pitches */
+        .pitch-card {
+            background: linear-gradient(135deg, var(--gray-800) 0%, var(--gray-900) 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 24px;
+        }
+
+        .pitch-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pitch-card .duration {
+            color: var(--gray-400);
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+        }
+
+        .pitch-card p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--gray-300);
+        }
+
+        .pitch-card p em {
+            color: white;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* Checklist */
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+
+        .checklist-item.done {
+            color: var(--gray-600);
+        }
+
+        .checklist-item.done::before {
+            content: '✓';
+            width: 24px;
+            height: 24px;
+            background: var(--secondary-light);
+            color: var(--secondary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .checklist-item.pending {
+            color: var(--gray-400);
+        }
+
+        .checklist-item.pending::before {
+            content: '○';
+            width: 24px;
+            height: 24px;
+            background: var(--gray-100);
+            color: var(--gray-400);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-900);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        footer h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: var(--gray-400);
+            margin-bottom: 24px;
+        }
+
+        footer .version {
+            color: var(--gray-500);
+            font-size: 0.75rem;
+            margin-top: 40px;
+        }
+
+        /* Highlight boxes */
+        .highlight-box {
+            background: var(--primary-light);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .highlight-box.green {
+            background: var(--secondary-light);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        .highlight-box h4 {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        /* Discovery Questions */
+        .questions-list {
+            counter-reset: question;
+        }
+
+        .question-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .question-item::before {
+            counter-increment: question;
+            content: counter(question);
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .question-item .text {
+            flex: 1;
+        }
+
+        .question-item .label {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .question-item .example {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            font-style: italic;
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav {
+                display: none;
+            }
+            .hero {
+                padding: 40px 20px;
+            }
+            .feature-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="badge">Business Development Guide</div>
+            <h1>Accountant CRM</h1>
+            <p class="subtitle">Purpose-built practice management for Australian accounting firms</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#problem">The Problem</a>
+            <a href="#features">Features</a>
+            <a href="#market">Target Market</a>
+            <a href="#competitive">Why Us</a>
+            <a href="#usecases">Use Cases</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#sales">Sales Process</a>
+            <a href="#objections">Objections</a>
+            <a href="#pitches">Pitches</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Product Overview -->
+        <section>
+            <div class="card">
+                <h3><span class="icon">📊</span> Product Overview</h3>
+                <p><strong>Accountant CRM</strong> is a purpose-built practice management solution designed specifically for accounting firms, tax practices, and financial service providers. Unlike generic CRM systems, our platform understands the unique workflows, compliance requirements, and client management needs of the accounting profession.</p>
+            </div>
+        </section>
+
+        <!-- The Problem -->
+        <section id="problem">
+            <div class="section-header">
+                <h2>The Problem We Solve</h2>
+                <p>Pain points that keep accounting practices from reaching their potential</p>
+            </div>
+
+            <div class="pain-point">
+                <div class="icon">📁</div>
+                <div>
+                    <h4>Scattered Client Data</h4>
+                    <p>Client information spread across emails, spreadsheets, and filing cabinets</p>
+                </div>
+            </div>
+
+            <div class="pain-point">
+                <div class="icon">📋</div>
+                <div>
+                    <h4>Manual Job Tracking</h4>
+                    <p>No visibility into job status, deadlines, or workload distribution</p>
+                </div>
+            </div>
+
+            <div class="pain-point">
+                <div class="icon">💰</div>
+                <div>
+                    <h4>Lost Revenue</h4>
+                    <p>Unbilled work, missed renewals, and forgotten follow-ups</p>
+                </div>
+            </div>
+
+            <div class="pain-point">
+                <div class="icon">⚠️</div>
+                <div>
+                    <h4>Compliance Risk</h4>
+                    <p>Difficulty tracking lodgement deadlines and regulatory requirements</p>
+                </div>
+            </div>
+
+            <div class="pain-point">
+                <div class="icon">⏰</div>
+                <div>
+                    <h4>Staff Inefficiency</h4>
+                    <p>Time wasted on admin tasks instead of billable client work</p>
+                </div>
+            </div>
+
+            <div class="pain-point">
+                <div class="icon">💬</div>
+                <div>
+                    <h4>Client Communication Gaps</h4>
+                    <p>No centralized system for queries, documents, and updates</p>
+                </div>
+            </div>
+
+            <div class="pain-point">
+                <div class="icon">🏢</div>
+                <div>
+                    <h4>External Accountant Complexity</h4>
+                    <p>B2B clients managing multiple entities with changing contacts</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features">
+            <div class="section-header">
+                <h2>Key Features & Benefits</h2>
+                <p>Everything your practice needs to thrive</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="feature-card">
+                    <div class="number">1</div>
+                    <h3>Client & Entity Management</h3>
+                    <p class="description">Comprehensive client profiles with support for multiple entity types (Companies, Trusts, SMSFs, Partnerships, Individuals)</p>
+                    <ul class="benefits">
+                        <li>Single source of truth for all client information</li>
+                        <li>Track multiple entities per client</li>
+                        <li>Historical contact tracking</li>
+                        <li>Australian business identifiers (ABN, ACN, TFN)</li>
+                        <li>Trust-specific fields built-in</li>
+                    </ul>
+                    <div class="value-prop">"Know your clients better than ever before. All information, all entities, all history - in one place."</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="number">2</div>
+                    <h3>Service Request & Job Management</h3>
+                    <p class="description">End-to-end job tracking from request to completion</p>
+                    <ul class="benefits">
+                        <li>Automated request numbering and tracking</li>
+                        <li>Visual workflow management</li>
+                        <li>Priority and deadline management</li>
+                        <li>Workload visibility across the team</li>
+                        <li>Full audit trail</li>
+                    </ul>
+                    <div class="value-prop">"Never miss a deadline. Never lose track of a job. Full visibility from request to completion."</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="number">3</div>
+                    <h3>Invoicing & Revenue Tracking</h3>
+                    <p class="description">Integrated invoicing with professional PDF generation</p>
+                    <ul class="benefits">
+                        <li>Create invoices directly from completed jobs</li>
+                        <li>Customizable invoice templates</li>
+                        <li>GST/Tax calculations built-in</li>
+                        <li>Payment tracking and reminders</li>
+                        <li>Revenue vs. cost analytics</li>
+                    </ul>
+                    <div class="value-prop">"Get paid faster. Track every dollar. Understand your true profitability."</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="number">4</div>
+                    <h3>Document Management</h3>
+                    <p class="description">Secure cloud-based document storage linked to clients and jobs</p>
+                    <ul class="benefits">
+                        <li>Centralized document repository</li>
+                        <li>Direct upload from client portal</li>
+                        <li>Document versioning and history</li>
+                        <li>Secure sharing links</li>
+                        <li>Organized by client, entity, and job</li>
+                    </ul>
+                    <div class="value-prop">"All your documents, securely stored, instantly accessible."</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="number">5</div>
+                    <h3>Client Self-Service Portal</h3>
+                    <p class="description">Branded client portal for self-service requests and communication</p>
+                    <ul class="benefits">
+                        <li>Clients can submit requests 24/7</li>
+                        <li>Upload documents directly</li>
+                        <li>Track request status in real-time</li>
+                        <li>Secure messaging with your team</li>
+                        <li>Reduced phone calls and emails</li>
+                    </ul>
+                    <div class="value-prop">"Give your clients the modern experience they expect. Available 24/7."</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="number">6</div>
+                    <h3>Custom Forms & Data Collection</h3>
+                    <p class="description">Dynamic form builder for client onboarding and data collection</p>
+                    <ul class="benefits">
+                        <li>Create custom intake forms</li>
+                        <li>Conditional logic and multi-section forms</li>
+                        <li>File upload within forms</li>
+                        <li>Pre-populate recurring client data</li>
+                        <li>Reduce back-and-forth</li>
+                    </ul>
+                    <div class="value-prop">"Collect the right information, first time, every time."</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="number">7</div>
+                    <h3>Workflow Automation</h3>
+                    <p class="description">Visual workflow builder with automated actions</p>
+                    <ul class="benefits">
+                        <li>Design custom workflows</li>
+                        <li>Automatic status transitions</li>
+                        <li>Email notifications at key stages</li>
+                        <li>Deadline reminders</li>
+                        <li>Reduce manual process management</li>
+                    </ul>
+                    <div class="value-prop">"Automate the routine. Focus on what matters."</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="number">8</div>
+                    <h3>Team Management & Analytics</h3>
+                    <p class="description">Staff management with workload and performance insights</p>
+                    <ul class="benefits">
+                        <li>Role-based access control</li>
+                        <li>Workload distribution visibility</li>
+                        <li>Job analytics and bottleneck identification</li>
+                        <li>Time-in-state tracking</li>
+                        <li>Staff utilization reporting</li>
+                    </ul>
+                    <div class="value-prop">"Understand your practice like never before. Data-driven decisions for growth."</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="number">9</div>
+                    <h3>Renewal Management</h3>
+                    <p class="description">Automated service renewal tracking and reminders</p>
+                    <ul class="benefits">
+                        <li>Never miss a recurring engagement</li>
+                        <li>Automated renewal reminders</li>
+                        <li>Track annual returns, registrations, audits</li>
+                        <li>Convert renewals to requests with one click</li>
+                    </ul>
+                    <div class="value-prop">"Recurring revenue on autopilot. Never miss a renewal again."</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="number">10</div>
+                    <h3>Multi-Practice Support</h3>
+                    <p class="description">Support for managing multiple practices/companies</p>
+                    <ul class="benefits">
+                        <li>Super admin oversight across practices</li>
+                        <li>Separate branding per practice</li>
+                        <li>Consolidated reporting</li>
+                        <li>Shared service catalog with custom pricing</li>
+                    </ul>
+                    <div class="value-prop">"Scale your practice. Manage multiple entities from one platform."</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Target Market -->
+        <section id="market">
+            <div class="section-header">
+                <h2>Target Market</h2>
+                <p>Who benefits most from Accountant CRM</p>
+            </div>
+
+            <div class="card">
+                <h3><span class="icon">🎯</span> Primary Audience</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Segment</th>
+                                <th>Size</th>
+                                <th>Key Needs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Small Accounting Practices</strong></td>
+                                <td>1-5 staff</td>
+                                <td>Simple job tracking, client management, invoicing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Medium Practices</strong></td>
+                                <td>5-20 staff</td>
+                                <td>Workflow automation, team management, analytics</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tax Agents</strong></td>
+                                <td>Any size</td>
+                                <td>Lodgement tracking, deadline management, client portal</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bookkeeping Firms</strong></td>
+                                <td>Any size</td>
+                                <td>BAS tracking, client communication, document management</td>
+                            </tr>
+                            <tr>
+                                <td><strong>External Accountants (B2B)</strong></td>
+                                <td>Any size</td>
+                                <td>Multi-entity management, client organization tracking</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><span class="icon">🎯</span> Secondary Audience</h3>
+                <ul>
+                    <li>Financial Planners</li>
+                    <li>SMSF Administrators</li>
+                    <li>Business Advisors</li>
+                    <li>Mortgage Brokers (with accounting services)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Competitive Advantages -->
+        <section id="competitive">
+            <div class="section-header">
+                <h2>Why Choose Accountant CRM?</h2>
+                <p>Our competitive advantages</p>
+            </div>
+
+            <div class="card">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Competitor Type</th>
+                                <th>Their Limitation</th>
+                                <th>Our Advantage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Generic CRMs</strong><br><small>(Salesforce, HubSpot)</small></td>
+                                <td>Not built for accounting workflows</td>
+                                <td>Purpose-built for accounting practices</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Practice Management</strong><br><small>(MYOB Practice, Xero PM)</small></td>
+                                <td>Expensive, complex, overkill for small practices</td>
+                                <td>Right-sized, affordable, easy to use</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Spreadsheets & Email</strong></td>
+                                <td>No automation, no visibility, data silos</td>
+                                <td>Centralized, automated, collaborative</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Paper-based Systems</strong></td>
+                                <td>Slow, error-prone, not scalable</td>
+                                <td>Digital, efficient, scalable</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="highlight-box green">
+                <h4>Unique Selling Points</h4>
+                <ul>
+                    <li><strong>Australian-First Design</strong> - Built for Australian accounting practices with ABN, TFN, BAS, and lodgement workflows</li>
+                    <li><strong>Client Entity Management</strong> - Unique feature for managing companies, trusts, and SMSFs with contact history</li>
+                    <li><strong>External Accountant Support</strong> - Purpose-built for B2B accounting relationships</li>
+                    <li><strong>Affordable Pricing</strong> - Enterprise features at SMB pricing</li>
+                    <li><strong>Modern Technology</strong> - Cloud-native, mobile-responsive, fast</li>
+                    <li><strong>White-Label Ready</strong> - Your branding, your client experience</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section id="usecases">
+            <div class="section-header">
+                <h2>Use Cases & Success Stories</h2>
+                <p>Real scenarios showing real value</p>
+            </div>
+
+            <div class="use-case">
+                <div class="use-case-header">
+                    <h3>Use Case 1: Small Tax Practice</h3>
+                    <p>Solo practitioner managing 200+ individual tax returns</p>
+                </div>
+                <div class="use-case-content">
+                    <div class="before-after">
+                        <div class="before">
+                            <h4>❌ Before</h4>
+                            <ul>
+                                <li>Client details in spreadsheets</li>
+                                <li>Documents lost in email</li>
+                                <li>Missed deadlines</li>
+                                <li>Late invoices</li>
+                                <li>Hours spent on admin</li>
+                            </ul>
+                        </div>
+                        <div class="after">
+                            <h4>✓ After</h4>
+                            <ul>
+                                <li>All clients in one system</li>
+                                <li>Automated deadline tracking</li>
+                                <li>Client portal for documents</li>
+                                <li>30% reduction in admin time</li>
+                                <li>Zero missed deadlines</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="use-case">
+                <div class="use-case-header">
+                    <h3>Use Case 2: Growing Bookkeeping Firm</h3>
+                    <p>5-person team handling BAS for 50 business clients</p>
+                </div>
+                <div class="use-case-content">
+                    <div class="before-after">
+                        <div class="before">
+                            <h4>❌ Before</h4>
+                            <ul>
+                                <li>Jobs tracked in shared spreadsheet</li>
+                                <li>No visibility into workload</li>
+                                <li>Inconsistent processes</li>
+                                <li>Missed quarterly lodgements</li>
+                                <li>Client complaints</li>
+                            </ul>
+                        </div>
+                        <div class="after">
+                            <h4>✓ After</h4>
+                            <ul>
+                                <li>Standardized BAS workflow</li>
+                                <li>Balanced workload across team</li>
+                                <li>Automated quarterly reminders</li>
+                                <li>40% faster turnaround</li>
+                                <li>Happy clients</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="use-case">
+                <div class="use-case-header">
+                    <h3>Use Case 3: External Accountant (B2B)</h3>
+                    <p>Accountant managing 30 client entities (companies, trusts, SMSFs)</p>
+                </div>
+                <div class="use-case-content">
+                    <div class="before-after">
+                        <div class="before">
+                            <h4>❌ Before</h4>
+                            <ul>
+                                <li>Lost track when contacts changed</li>
+                                <li>Couldn't link work to correct entity</li>
+                                <li>Messy, scattered records</li>
+                                <li>Compliance concerns</li>
+                                <li>Unprofessional reporting</li>
+                            </ul>
+                        </div>
+                        <div class="after">
+                            <h4>✓ After</h4>
+                            <ul>
+                                <li>Each organization tracked separately</li>
+                                <li>Full history when contacts change</li>
+                                <li>Requests linked to correct entity</li>
+                                <li>Professional entity-based reporting</li>
+                                <li>Complete audit trail</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing">
+            <div class="section-header">
+                <h2>Pricing Strategy</h2>
+                <p>Flexible options for every practice size</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-name">Starter</div>
+                    <div class="plan-target">Solo practitioners</div>
+                    <div class="price">$49-79</div>
+                    <div class="price-period">per month</div>
+                    <ul class="features">
+                        <li>Up to 100 clients</li>
+                        <li>Basic job tracking</li>
+                        <li>Document storage</li>
+                        <li>Invoicing</li>
+                        <li>Email support</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="plan-name">Professional</div>
+                    <div class="plan-target">Small practices (2-5 staff)</div>
+                    <div class="price">$149-249</div>
+                    <div class="price-period">per month</div>
+                    <ul class="features">
+                        <li>Unlimited clients</li>
+                        <li>Workflow automation</li>
+                        <li>Client portal</li>
+                        <li>Custom forms</li>
+                        <li>Team management</li>
+                        <li>Priority support</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="plan-name">Business</div>
+                    <div class="plan-target">Medium practices (5-15 staff)</div>
+                    <div class="price">$349-499</div>
+                    <div class="price-period">per month</div>
+                    <ul class="features">
+                        <li>Everything in Professional</li>
+                        <li>Advanced analytics</li>
+                        <li>API access</li>
+                        <li>Custom branding</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="plan-name">Enterprise</div>
+                    <div class="plan-target">Large practices, multi-office</div>
+                    <div class="price">Custom</div>
+                    <div class="price-period">pricing</div>
+                    <ul class="features">
+                        <li>Everything in Business</li>
+                        <li>Multi-practice support</li>
+                        <li>White-label options</li>
+                        <li>SLA guarantee</li>
+                        <li>Dedicated account manager</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sales Process -->
+        <section id="sales">
+            <div class="section-header">
+                <h2>Sales Process Guide</h2>
+                <p>How to qualify and convert prospects</p>
+            </div>
+
+            <div class="card">
+                <h3><span class="icon">❓</span> Discovery Questions</h3>
+                <div class="questions-list">
+                    <div class="question-item">
+                        <div class="text">
+                            <div class="label">Current Tools</div>
+                            <div class="example">"What systems do you currently use to manage clients and jobs?"</div>
+                        </div>
+                    </div>
+                    <div class="question-item">
+                        <div class="text">
+                            <div class="label">Pain Points</div>
+                            <div class="example">"What's your biggest frustration with your current process?"</div>
+                        </div>
+                    </div>
+                    <div class="question-item">
+                        <div class="text">
+                            <div class="label">Growth Plans</div>
+                            <div class="example">"How many clients do you expect to have in 2 years?"</div>
+                        </div>
+                    </div>
+                    <div class="question-item">
+                        <div class="text">
+                            <div class="label">Team Size</div>
+                            <div class="example">"How many people need access to client information?"</div>
+                        </div>
+                    </div>
+                    <div class="question-item">
+                        <div class="text">
+                            <div class="label">Compliance</div>
+                            <div class="example">"How do you currently track lodgement deadlines?"</div>
+                        </div>
+                    </div>
+                    <div class="question-item">
+                        <div class="text">
+                            <div class="label">Client Types</div>
+                            <div class="example">"Do you manage trusts, SMSFs, or companies for clients?"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><span class="icon">✅</span> Qualification Criteria</h3>
+                <div class="before-after">
+                    <div class="after">
+                        <h4>Good Fit</h4>
+                        <ul>
+                            <li>Managing 50+ clients</li>
+                            <li>2+ team members OR solo wanting to grow</li>
+                            <li>Currently using spreadsheets or basic tools</li>
+                            <li>Pain around job tracking or client communication</li>
+                            <li>Values efficiency and professionalism</li>
+                        </ul>
+                    </div>
+                    <div class="before">
+                        <h4>Not Ideal Fit</h4>
+                        <ul>
+                            <li>Very small practices content with current process</li>
+                            <li>Already invested in enterprise solutions</li>
+                            <li>No interest in digital transformation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><span class="icon">🎬</span> Demo Script Outline</h3>
+                <ol>
+                    <li><strong>Show Client Management</strong> (2 min) - Create a client, show entity types</li>
+                    <li><strong>Create a Service Request</strong> (2 min) - Show client portal view</li>
+                    <li><strong>Job Workflow</strong> (3 min) - Show assignment, status updates, deadlines</li>
+                    <li><strong>Generate Invoice</strong> (2 min) - Show PDF, branding</li>
+                    <li><strong>Dashboard & Analytics</strong> (2 min) - Show value of visibility</li>
+                    <li><strong>Q&A</strong> (5+ min) - Address specific needs</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Objection Handling -->
+        <section id="objections">
+            <div class="section-header">
+                <h2>Objection Handling</h2>
+                <p>How to address common concerns</p>
+            </div>
+
+            <div class="objection">
+                <div class="question">"We're too small for this"</div>
+                <div class="answer">Our Starter plan is designed specifically for practices your size. Even solo practitioners see ROI from reduced admin time and zero missed deadlines.</div>
+            </div>
+
+            <div class="objection">
+                <div class="question">"We already have a system"</div>
+                <div class="answer">Many of our best customers switched from other tools. We offer free data migration and a 30-day trial so you can compare side-by-side with no risk.</div>
+            </div>
+
+            <div class="objection">
+                <div class="question">"It looks complicated"</div>
+                <div class="answer">We designed this for accountants, not IT experts. Most practices are fully operational within a week, and we provide free onboarding support.</div>
+            </div>
+
+            <div class="objection">
+                <div class="question">"What about our existing data?"</div>
+                <div class="answer">We provide professional data migration services. Your client history, documents, and records all come with you.</div>
+            </div>
+
+            <div class="objection">
+                <div class="question">"How secure is it?"</div>
+                <div class="answer">We use bank-level encryption, Australian data centers, and comply with ATO digital requirements. Your data is safer with us than on a local computer.</div>
+            </div>
+
+            <div class="objection">
+                <div class="question">"Can clients really use this?"</div>
+                <div class="answer">Absolutely. The client portal is deliberately simple. If your clients can use internet banking, they can use our portal.</div>
+            </div>
+        </section>
+
+        <!-- Marketing Pitches -->
+        <section id="pitches">
+            <div class="section-header">
+                <h2>Marketing Messages</h2>
+                <p>Ready-to-use pitches for different situations</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Taglines</h4>
+                <ul>
+                    <li>"Practice Management Built for Australian Accountants"</li>
+                    <li>"From Spreadsheets to Success"</li>
+                    <li>"Know Every Client. Track Every Job. Grow Your Practice."</li>
+                    <li>"The CRM That Speaks Accountant"</li>
+                </ul>
+            </div>
+
+            <div class="pitch-card">
+                <h3>Elevator Pitch</h3>
+                <div class="duration">30 seconds</div>
+                <p>"Accountant CRM is a practice management platform built specifically for Australian accounting firms. We help practices like yours <em>manage clients, track jobs, automate workflows, and get paid faster</em> - all in one system. Our clients typically save <em>10+ hours per week</em> on admin and <em>never miss another deadline</em>. Would you be open to a quick demo?"</p>
+            </div>
+
+            <div class="pitch-card">
+                <h3>Value Statement</h3>
+                <div class="duration">60 seconds</div>
+                <p>"Most accounting practices we talk to are still managing clients in spreadsheets and tracking jobs via email. It works... until it doesn't. A missed deadline, a lost document, an unbilled job - these small issues add up to big problems.</p>
+                <p style="margin-top: 16px;">Accountant CRM solves this by giving you <em>one place for everything</em>: client information, service requests, documents, invoices, and team workload. We built it specifically for Australian accountants, so it understands <em>ABNs, BAS cycles, and trust structures</em> out of the box.</p>
+                <p style="margin-top: 16px;">The result? Practices using our system report <em>30% less admin time</em>, <em>zero missed deadlines</em>, and <em>happier clients</em> who love the self-service portal. Would you like to see how it could work for your practice?"</p>
+            </div>
+        </section>
+
+        <!-- Feature Checklist -->
+        <section>
+            <div class="section-header">
+                <h2>Feature Checklist</h2>
+                <p>What's available now and what's coming</p>
+            </div>
+
+            <div class="card">
+                <h3><span class="icon">✅</span> Core Features (Available Now)</h3>
+                <div class="checklist">
+                    <div class="checklist-item done">Client management with full profiles</div>
+                    <div class="checklist-item done">Client entity management (Companies, Trusts, SMSFs)</div>
+                    <div class="checklist-item done">Service request tracking</div>
+                    <div class="checklist-item done">Job workflow management</div>
+                    <div class="checklist-item done">Team assignment and workload</div>
+                    <div class="checklist-item done">Deadline and priority management</div>
+                    <div class="checklist-item done">Document management</div>
+                    <div class="checklist-item done">Invoicing with PDF generation</div>
+                    <div class="checklist-item done">Client self-service portal</div>
+                    <div class="checklist-item done">Custom form builder</div>
+                    <div class="checklist-item done">Email notifications</div>
+                    <div class="checklist-item done">Dashboard and analytics</div>
+                    <div class="checklist-item done">Audit trail and history</div>
+                    <div class="checklist-item done">Role-based access control</div>
+                    <div class="checklist-item done">Multi-practice support</div>
+                    <div class="checklist-item done">Custom branding</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><span class="icon">🚀</span> Coming Soon</h3>
+                <div class="checklist">
+                    <div class="checklist-item pending">Xero integration</div>
+                    <div class="checklist-item pending">MYOB integration</div>
+                    <div class="checklist-item pending">ATO integration</div>
+                    <div class="checklist-item pending">Mobile app</div>
+                    <div class="checklist-item pending">SMS notifications</div>
+                    <div class="checklist-item pending">Advanced reporting</div>
+                    <div class="checklist-item pending">Client satisfaction surveys</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h2>Ready to Transform Your Practice?</h2>
+        <p>Contact the Business Development team for demos, pricing, and partnership opportunities.</p>
+        <div class="version">
+            Document Version: 1.0 | Last Updated: January 2026 | For Internal Business Development Use
+        </div>
+    </footer>
+</body>
+</html>

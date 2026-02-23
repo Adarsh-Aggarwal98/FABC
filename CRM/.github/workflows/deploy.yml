@@ -1,0 +1,98 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'Build type'
+        required: true
+        type: choice
+        default: 'smart'
+        options:
+          - smart
+          - full
+          - full-with-db
+          - full-with-db-backup
+          - backend-only
+          - frontend-only
+
+jobs:
+  deploy:
+    name: Deploy to Production Server
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build deploy command
+        id: build_cmd
+        run: |
+          CMD="./scripts/deploy.sh"
+          BUILD_TYPE="${{ github.event.inputs.build_type || 'smart' }}"
+
+          case "$BUILD_TYPE" in
+            "full")
+              CMD="$CMD --full-build"
+              echo "🔨 Full build: Rebuilding backend + frontend"
+              ;;
+            "full-with-db")
+              CMD="$CMD --full-build --rebuild-db"
+              echo "🌱 Full build with DB: Fresh schema + seed_data.sql if exists"
+              ;;
+            "full-with-db-backup")
+              CMD="$CMD --full-build --rebuild-db-backup"
+              echo "🔄 Full build with DB backup: Fresh schema + restore existing data"
+              ;;
+            "backend-only")
+              CMD="$CMD --backend-only"
+              echo "🔧 Backend only: Rebuilding backend container"
+              ;;
+            "frontend-only")
+              CMD="$CMD --frontend-only"
+              echo "🎨 Frontend only: Rebuilding frontend container"
+              ;;
+            "smart"|*)
+              echo "🧠 Smart build: Rebuilding backend + frontend"
+              ;;
+          esac
+
+          echo "command=$CMD" >> $GITHUB_OUTPUT
+          echo "📋 Deploy command: $CMD"
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          timeout: 300s
+          command_timeout: 10m
+          script: |
+            cd /root/Jaypee_crm
+            chmod +x scripts/deploy.sh
+            ${{ steps.build_cmd.outputs.command }}
+
+      - name: Deployment Success
+        if: success()
+        run: |
+          echo "✅ DEPLOYMENT SUCCESSFUL"
+          echo "========================"
+          echo "Commit: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Triggered by: ${{ github.actor }}"
+          echo "Build type: ${{ github.event.inputs.build_type || 'smart' }}"
+
+      - name: Deployment Failed
+        if: failure()
+        run: |
+          echo "❌ DEPLOYMENT FAILED"
+          echo "===================="
+          echo "Commit: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Please check the logs above for details."

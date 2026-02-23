@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
+import { authFetch } from "@/contexts/AuthContext";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -56,7 +57,7 @@ export default function Documents() {
     setIsLoading(true);
     try {
       const url = userId ? `/api/documents/user/${userId}` : "/api/documents";
-      const response = await fetch(url, { credentials: "include" });
+      const response = await authFetch(url);
       if (response.ok) {
         const data = await response.json();
         setDocuments(userId ? data.documents : data);
@@ -70,7 +71,7 @@ export default function Documents() {
 
   const fetchAllUsers = async () => {
     try {
-      const response = await fetch("/api/documents/all-users", { credentials: "include" });
+      const response = await authFetch("/api/documents/all-users");
       if (response.ok) {
         const data = await response.json();
         setAllUsers(data);
@@ -94,9 +95,10 @@ export default function Documents() {
     }
 
     try {
+      const token = localStorage.getItem("access_token");
       const response = await fetch("/api/documents/upload", {
         method: "POST",
-        credentials: "include",
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
         body: formData,
       });
 
@@ -120,9 +122,7 @@ export default function Documents() {
 
   const handleDownload = async (doc: Document) => {
     try {
-      const response = await fetch(`/api/documents/${doc.id}/download`, {
-        credentials: "include",
-      });
+      const response = await authFetch(`/api/documents/${doc.id}/download`);
 
       if (response.ok) {
         const data = await response.json();
@@ -139,10 +139,7 @@ export default function Documents() {
     if (!confirm(`Are you sure you want to delete "${doc.fileName}"?`)) return;
 
     try {
-      const response = await fetch(`/api/documents/${doc.id}`, {
-        method: "DELETE",
-        credentials: "include",
-      });
+      const response = await authFetch(`/api/documents/${doc.id}`, { method: "DELETE" });
 
       if (response.ok) {
         setSuccess("Document deleted");

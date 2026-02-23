@@ -1,9 +1,7 @@
 // API Configuration and utilities
 
-// Use relative URL in production (same origin), full URL in development
-const API_BASE_URL = import.meta.env.MODE === 'production'
-  ? '' // Empty string means same origin (relative URLs)
-  : (import.meta.env.VITE_API_URL || 'http://localhost:5000');
+// Always use relative paths — Vite proxy (dev) and Nginx (prod) route /api/* to the backend
+const API_BASE_URL = '';
 
 export interface ContactFormData {
   name: string;

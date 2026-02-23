@@ -21,8 +21,18 @@ export default function Login() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { login, verify2FA, resend2FA } = useAuth();
+  const { login, verifyOTP, resendOTP } = useAuth();
   const [, setLocation] = useLocation();
+
+  const STAFF_ROLES = ["super_admin", "admin", "senior_accountant", "accountant", "external_accountant"];
+
+  const redirectAfterLogin = (role?: string) => {
+    if (role && STAFF_ROLES.includes(role)) {
+      window.location.href = "http://localhost:5173/crm/";
+    } else {
+      setLocation("/dashboard");
+    }
+  };
 
   const handleCredentialSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,7 +48,7 @@ export default function Login() {
         setSuccess("Verification code sent to your email");
       } else {
         // Direct login (2FA skipped for test accounts)
-        setLocation("/dashboard");
+        redirectAfterLogin(result.role);
       }
     } else {
       setError(result.message || "Login failed");
@@ -52,10 +62,10 @@ export default function Login() {
     setError("");
     setIsLoading(true);
 
-    const result = await verify2FA(otpCode);
+    const result = await verifyOTP(otpCode);
 
     if (result.success) {
-      setLocation("/dashboard");
+      redirectAfterLogin(result.role);
     } else {
       setError(result.message || "Invalid verification code");
     }
@@ -68,7 +78,7 @@ export default function Login() {
     setSuccess("");
     setIsLoading(true);
 
-    const result = await resend2FA();
+    const result = await resendOTP();
 
     if (result.success) {
       setSuccess("New verification code sent");

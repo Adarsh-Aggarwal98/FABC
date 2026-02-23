@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth, authFetch } from "@/contexts/AuthContext";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -115,11 +115,11 @@ export default function AdminDashboard() {
     setIsLoading(true);
     try {
       const [usersRes, pendingRes, invitationsRes, blogsRes, alertsRes] = await Promise.all([
-        fetch("/api/admin/users", { credentials: "include" }),
-        fetch("/api/admin/users/pending", { credentials: "include" }),
-        fetch("/api/admin/invitations", { credentials: "include" }),
-        fetch("/api/admin/blogs", { credentials: "include" }),
-        fetch("/api/admin/ato-alerts", { credentials: "include" }),
+        authFetch("/api/admin/users"),
+        authFetch("/api/admin/users/pending"),
+        authFetch("/api/admin/invitations"),
+        authFetch("/api/admin/blogs"),
+        authFetch("/api/admin/ato-alerts"),
       ]);
 
       if (usersRes.ok) setUsers(await usersRes.json());
@@ -136,10 +136,7 @@ export default function AdminDashboard() {
 
   const handleApprove = async (userId: string) => {
     try {
-      const response = await fetch(`/api/admin/users/${userId}/approve`, {
-        method: "POST",
-        credentials: "include",
-      });
+      const response = await authFetch(`/api/admin/users/${userId}/approve`, { method: "POST" });
 
       if (response.ok) {
         setSuccess("User approved successfully");
@@ -157,10 +154,7 @@ export default function AdminDashboard() {
     if (!confirm("Are you sure you want to reject this user?")) return;
 
     try {
-      const response = await fetch(`/api/admin/users/${userId}/reject`, {
-        method: "POST",
-        credentials: "include",
-      });
+      const response = await authFetch(`/api/admin/users/${userId}/reject`, { method: "POST" });
 
       if (response.ok) {
         setSuccess("User rejected");
@@ -177,10 +171,7 @@ export default function AdminDashboard() {
     if (!confirm("Are you sure you want to suspend this user?")) return;
 
     try {
-      const response = await fetch(`/api/admin/users/${userId}/suspend`, {
-        method: "POST",
-        credentials: "include",
-      });
+      const response = await authFetch(`/api/admin/users/${userId}/suspend`, { method: "POST" });
 
       if (response.ok) {
         setSuccess("User suspended");
@@ -195,10 +186,7 @@ export default function AdminDashboard() {
 
   const handleReactivate = async (userId: string) => {
     try {
-      const response = await fetch(`/api/admin/users/${userId}/reactivate`, {
-        method: "POST",
-        credentials: "include",
-      });
+      const response = await authFetch(`/api/admin/users/${userId}/reactivate`, { method: "POST" });
 
       if (response.ok) {
         setSuccess("User reactivated");
@@ -217,10 +205,8 @@ export default function AdminDashboard() {
     setError("");
 
     try {
-      const response = await fetch("/api/admin/invite", {
+      const response = await authFetch("/api/admin/invite", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
         body: JSON.stringify({ email: inviteEmail, role: inviteRole }),
       });
 
@@ -244,10 +230,7 @@ export default function AdminDashboard() {
 
   const handleCancelInvitation = async (invitationId: string) => {
     try {
-      const response = await fetch(`/api/admin/invitations/${invitationId}`, {
-        method: "DELETE",
-        credentials: "include",
-      });
+      const response = await authFetch(`/api/admin/invitations/${invitationId}`, { method: "DELETE" });
 
       if (response.ok) {
         setSuccess("Invitation cancelled");
@@ -311,10 +294,8 @@ export default function AdminDashboard() {
         : "/api/admin/blogs";
       const method = editingBlog ? "PUT" : "POST";
 
-      const response = await fetch(url, {
+      const response = await authFetch(url, {
         method,
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
         body: JSON.stringify(blogForm),
       });
 
@@ -335,10 +316,7 @@ export default function AdminDashboard() {
     if (!confirm("Are you sure you want to delete this blog?")) return;
 
     try {
-      const response = await fetch(`/api/admin/blogs/${blogId}`, {
-        method: "DELETE",
-        credentials: "include",
-      });
+      const response = await authFetch(`/api/admin/blogs/${blogId}`, { method: "DELETE" });
 
       if (response.ok) {
         setSuccess("Blog deleted");
@@ -385,10 +363,8 @@ export default function AdminDashboard() {
         : "/api/admin/ato-alerts";
       const method = editingAlert ? "PUT" : "POST";
 
-      const response = await fetch(url, {
+      const response = await authFetch(url, {
         method,
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
         body: JSON.stringify(alertForm),
       });
 
@@ -409,10 +385,7 @@ export default function AdminDashboard() {
     if (!confirm("Are you sure you want to delete this alert?")) return;
 
     try {
-      const response = await fetch(`/api/admin/ato-alerts/${alertId}`, {
-        method: "DELETE",
-        credentials: "include",
-      });
+      const response = await authFetch(`/api/admin/ato-alerts/${alertId}`, { method: "DELETE" });
 
       if (response.ok) {
         setSuccess("Alert deleted");
